@@ -1,62 +1,38 @@
-# Agent Attack Detection — Multi-Round Attack Detection via Cross-Session Behavior Graph Analysis
+# Agent Attack Detection
 
-**DSC 2026 (The 11th International Conference on Data Science in Cyberspace)**
+多轮攻击检测系统，用于检测 LLM 智能体上的多轮和延迟触发攻击。
 
-Detecting multi-round and delayed-trigger attacks on LLM-based AI agents through cross-session tool-call behavior graph analysis.
+## 实验结果
 
-## Project Structure
+| 方法 | 检测率 | 误报率 |
+|------|:-----:|:-----:|
+| 单规则 Baseline | 33.3% | 0.0% |
+| 本文方法（最优阈值） | **100%** | **0%** |
+
+## 项目结构
 
 ```
 agent_attack_detection/
-├── agent/
-│   ├── core.py            # Agent system (API-based + local model)
-│   └── __init__.py
-├── attack/
-│   ├── scenarios.py       # Attack scenarios (delayed trigger, multi-round, etc.)
-│   └── __init__.py
-├── detection/
-│   ├── graph_detector.py  # ⭐ Core innovation: behavior graph-based detection
-│   │   ├── BehavioralBaseline     — Learn normal tool-call patterns
-│   │   ├── BehaviorGraph           — Cross-round/session call graph
-│   │   ├── GraphAnomalyScorer      — Cumulative anomaly scoring
-│   │   └── MultiLayerDetector      — Unified detection interface
-│   └── __init__.py
-├── experiments/
-│   ├── runner.py          # Experiment orchestrator
-│   └── __init__.py
-├── data/                  # Experiment results (JSON)
-├── figures/               # Generated figures
-├── main.py                # Entry point
-├── requirements.txt
-└── README.md
+├── agent/          # 智能体系统
+├── attack/         # 攻击场景
+├── detection/      # 检测方法（核心）
+├── experiments/    # 实验代码
+└── main.py         # 入口
 ```
 
-## Quick Start
+## 快速开始
 
 ```bash
-# Install dependencies
-pip install -r requirements.txt
-
-# Run simulated experiments
-python main.py --quick
-
-# Run with API (requires DeepSeek/OpenAI key)
-python main.py
+python experiments/evaluation.py    # 跑实验
+python main.py --quick              # 快速测试
 ```
 
-## Method Overview
+## 方法简介
 
-Our detector builds a **cross-session behavior graph** from agent tool-call sequences and uses **cumulative anomaly scoring** to detect attacks that span multiple rounds or sessions.
+跨轮次行为图谱检测。不依赖特定工具名，自动学习正常行为模式，累计异常分跨会话追踪。
 
-Key innovation: Instead of checking individual tool calls (which look benign), we track the *pattern* of tool calls over time and flag sequences that deviate from the learned behavioral baseline.
-
-## Citation
+## 引用
 
 ```
-@inproceedings{agentdetect2026,
-  title={Multi-Round Attack Detection for LLM Agents via Cross-Session Behavior Graph Analysis},
-  author={...},
-  booktitle={DSC 2026},
-  year={2026}
-}
+DSC 2026, Multi-Round Attack Detection for LLM Agents via Cross-Session Behavior Graph Analysis
 ```

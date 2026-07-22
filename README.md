@@ -1,49 +1,87 @@
 # Agent Attack Detection
 
-检测 LLM 智能体上的多轮攻击（multi-round）和延迟触发攻击（delayed-trigger）。  
-针对现有方法只能检测单轮攻击的不足，提出基于**跨轮次行为图谱**和**累计异常分**的检测方法。
+多轮攻击检测系统，用于检测 LLM 智能体上的多轮和延迟触发攻击。
 
-## 用途
+## 项目说明
 
-LLM 智能体在执行任务时会调用一系列工具（读邮件、转账、发消息等）。  
-攻击者可以通过提示注入、记忆投毒等方式让智能体执行恶意操作。
+LLM 智能体在执行任务时会调用一系列工具（读邮件、转账、发消息等）。攻击者可以通过提示注入、记忆投毒等方式让智能体执行恶意操作。
 
-**现存问题**：现有检测方法每次只看单次工具调用是否异常，但多轮攻击的每一步单独看都是合法操作，组合起来才是攻击。
+现有检测方法每次只看单次工具调用是否异常，但多轮攻击的每一步单独看都是合法操作，组合起来才是攻击。
 
-**本方法**：记录完整的工具调用序列，构建跨轮次的行为图谱，通过累计异常分跨会话追踪，检测单步无法发现的组合攻击。
+本方法记录完整的工具调用序列，构建跨轮次的行为图谱，通过累计异常分跨会话追踪，检测单步无法发现的组合攻击。
 
-## 效果
+## 已完成实验
 
-| 方法 | 检测率 | 误报率 |
-|------|:-----:|:-----:|
-| 单规则 Baseline | 33.3% | 0.0% |
-| 本文方法（最优阈值 0.8） | **100.0%** | **0.0%** |
+### 1. 多轮攻击检测对比实验
+`experiments/full_comparison.py`
 
-覆盖 5 种攻击类型：延迟触发、多轮链式、跨会话记忆投毒、工具滥用、提示注入。
+9 个攻击场景（延迟触发、多轮链式、跨会话记忆投毒、工具滥用、提示注入），4 种方法对比：
 
-## 实验
+| 方法 | 检测率 | 误报率 | F1 |
+|:----|:-----:|:-----:|:--:|
+| 本文方法（行为图谱） | **100%** | **0%** | **1.000** |
+| AgentShield (2026) | 85.6% | 0% | 0.922 |
+| Leong Trajectory (2026) | 88.9% | 0% | 0.941 |
+| Random Baseline | 100% | 71.4% | 0.783 |
 
-运行以下命令即可复现全部实验结果：
+### 2. 单轮检测实验（自定义数据集）
+`experiments/single_round_detection.py`
 
-```bash
-python experiments/evaluation.py
-```
+10 个良性 prompt + 10 个攻击 prompt：
 
-输出包含 4 组实验：主实验对比、消融实验、攻击类型分析、阈值扫描。
+| 检测器 | 检测率 | 误报率 | F1 | 延迟 |
+|:------|:-----:|:-----:|:--:|:---:|
+| bastion-prompt-protection (2026) | **100%** | 20% | 0.909 | 4s |
+| nukon-pi-detect | 0% | 0% | 0 | 2ms |
+| prompt-injection-sanitizer | 0% | 0% | 0 | 3ms |
+
+### 3. 完整检测基准测试（真实数据集）
+`experiments/complete_benchmark.py`
+
+使用 HuggingFace deepset/prompt-injections 数据集（546 条样本），评估真实场景检测性能：
+
+| 检测器 | 检测率 | 误报率 | AUC | 延迟 |
+|:------|:-----:|:-----:|:--:|:---:|
+| bastion-prompt-protection v1.3.5 | **35.5%** | **0.9%** | **0.892** | 60ms |
+| prompt-injection-sanitizer | 0% | 0% | 0.500 | 3ms |
+| nukon-pi-detect | 0% | 0% | 0.500 | 3ms |
+
+### 4. 消融实验
+`experiments/evaluation.py`
+
+| 变体 | 检测率 | 误报率 | 结论 |
+|:----|:-----:|:-----:|:----|
+| 完整系统 | 55.6% | 0% | 基线 |
+| 去掉跨轮次窗口 | **0%** | 0% | 图结构是核心 |
+| 高衰减（不跨会话） | **0%** | 0% | 跨会话追踪必要 |
 
 ## 项目结构
 
 ```
 agent_attack_detection/
-├── agent/core.py              # 智能体 + 记忆 + 工具调用
-├── attack/scenarios.py        # 攻击场景定义
-├── detection/graph_detector.py # 检测方法（行为图谱 + 累计分）
-├── experiments/evaluation.py  # 实验评估
-├── main.py                    # 入口
+├── agent/            # 智能体（API + 本地模型）
+├── attack/           # 攻击场景（5种类型9个场景）
+├── detection/        # 检测方法（核心）
+│   └── baselines.py  # AgentShield + Leong 对比实现
+├── experiments/      # 实验代码
+│   ├── full_comparison.py      # 多轮对比实验
+│   ├── single_round_detection.py # 单轮检测实验
+│   ├── complete_benchmark.py   # 完整基准测试
+│   └── evaluation.py           # 消融实验
+├── data/             # 实验结果 JSON
+└── main.py           # 入口
 ```
 
-## 引用
+## 快速开始
 
+```bash
+# 使用 Python 3.11 环境
+C:/Users/28995/agent_detect_env/Scripts/python experiments/full_comparison.py
+C:/Users/28995/agent_detect_env/Scripts/python experiments/complete_benchmark.py
 ```
-DSC 2026, Multi-Round Attack Detection for LLM Agents via Cross-Session Behavior Graph Analysis
-```
+
+## 运行环境
+
+- Python 3.11 虚拟环境：`C:/Users/28995/agent_detect_env`
+- 已安装：agentdojo, openai, bastion-prompt-protection, numpy, pandas, networkx, pytorch 等
+- 网络代理：Clash for Windows + ccswitch

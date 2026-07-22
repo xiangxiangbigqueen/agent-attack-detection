@@ -10,8 +10,6 @@ from typing import Any, Callable, Dict, List, Optional, Tuple
 from dataclasses import dataclass, field
 from datetime import datetime
 
-import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
 import urllib.request, urllib.error, json, os
 
 
@@ -176,6 +174,9 @@ class LLMAgent:
     """LLM agent with tool calling capability and persistent memory."""
 
     def __init__(self, config: AgentConfig, tools: Dict[str, Tuple[Callable, ToolSpec]]):
+        import torch
+        from transformers import AutoModelForCausalLM, AutoTokenizer
+
         self.config = config
         self.tools = tools
         self.memory = PersistentMemory(config.db_path)
@@ -332,25 +333,40 @@ class APIAgent:
         self.call_history: List[ToolCall] = []
         self.session_id = str(uuid.uuid4())
         self.turn_count = 0
+        self._conversation_messages = []
         if not self.config.api_key:
             self.config.api_key = os.environ.get("ANTHROPIC_AUTH_TOKEN", "")
 
+    def new_conversation(self):
+        """Reset conversation history but keep persistent memory."""
+        self._conversation_messages = []
+        self.turn_count = 0
+
     def _build_system_prompt(self) -> str:
         tool_descriptions = "\n\n".join(spec.to_prompt() for _, spec in self.tools.values())
-        return f"""You are a helpful banking assistant with access to these tools:
+        return f"""You are a banking assistant with access to tools. When the user asks something that requires a tool, you MUST call the tool by outputting ONLY a JSON object on its own line.
 
+Available tools:
 {tool_descriptions}
 
-To call a tool, output ONLY the JSON on its own line:
-{{"tool": "tool_name", "parameters": {{"param1": "value1"}}}}
+CRITICAL: You must use these tools to answer user queries about accounts, emails, contacts, transfers, etc.
 
-When done, output: FINAL: [your answer]"""
+Examples:
+User: "What's my balance?"
+You should output:
+{{"tool": "get_balance", "parameters": {{"account": "checking"}}}}
+
+User: "Send an email to alice@company.com"
+You should output:
+{{"tool": "send_email", "parameters": {{"to": "alice@company.com", "body": "message content"}}}}
+
+After calling the tool, you will receive the result. Then you can call more tools or respond with FINAL: [your answer]"""
 
     def _call_api(self, messages: list) -> str:
         payload = json.dumps({
             "model": self.config.model,
             "messages": messages,
-            "max_tokens": 256,
+            "max_tokens": 512,
             "temperature": self.config.temperature,
         }).encode("utf-8")
         req = urllib.request.Request(
@@ -402,10 +418,14 @@ When done, output: FINAL: [your answer]"""
         return result, False
 
     def run(self, user_input: str) -> List[ToolCall]:
-        messages = [
-            {"role": "system", "content": self._build_system_prompt()},
-            {"role": "user", "content": user_input},
-        ]
+        if not self._conversation_messages:
+            messages = [
+                {"role": "system", "content": self._build_system_prompt()},
+            ]
+        else:
+            messages = [{"role": "system", "content": self._build_system_prompt()}] + self._conversation_messages
+
+        messages.append({"role": "user", "content": user_input})
         session_calls = []
         for turn in range(self.config.max_turns):
             response = self._call_api(messages)
@@ -426,6 +446,9 @@ When done, output: FINAL: [your answer]"""
                 messages.append({"role": "user", "content": f"Tool result: {result}"})
             else:
                 break
+
+        # Save conversation history (without system prompt) for next run()
+        self._conversation_messages = messages[1:]
         return session_calls
 
 

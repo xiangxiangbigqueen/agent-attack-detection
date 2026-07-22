@@ -21,6 +21,10 @@ def main():
                         help="Max turns per agent session")
     parser.add_argument("--quick", "-q", action="store_true",
                         help="Quick test mode (1 repetition, simulated)")
+    parser.add_argument("--api-key", type=str, default="",
+                        help="DeepSeek/OpenAI API key (overrides local model)")
+    parser.add_argument("--api-url", type=str, default="https://api.deepseek.com/chat/completions",
+                        help="API endpoint URL")
     args = parser.parse_args()
 
     if args.quick:
@@ -30,6 +34,8 @@ def main():
         config = ExperimentConfig(
             n_repetitions=args.repetitions,
             max_turns_agent=args.max_turns,
+            api_key=args.api_key,
+            api_url=args.api_url,
         )
         harness = ExperimentHarness(config)
         results = harness.run_all()

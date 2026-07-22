@@ -4,9 +4,9 @@ Based on threat model from stateful-agent-security-eval (Leong, 2026).
 """
 
 import json
-from typing import Callable, Dict, List, Optional, Tuple
+from typing import Callable, Dict, List, Optional, Tuple, Union
 from dataclasses import dataclass
-from agent.core import LLMAgent, ToolCall
+from agent.core import LLMAgent, APIAgent, ToolCall
 
 
 # ── Attack types ───────────────────────────────────────────
@@ -34,7 +34,7 @@ class DelayedTriggerAttack:
     Reference: Leong (2026) - stateful-agent-security-eval
     """
 
-    def __init__(self, agent: LLMAgent):
+    def __init__(self, agent: Union[LLMAgent, APIAgent]):
         self.agent = agent
 
     def session_a_inject(self, attack_payload: str) -> List[ToolCall]:
@@ -110,7 +110,7 @@ class MultiRoundToolChainAttack:
         ],
     }
 
-    def __init__(self, agent: LLMAgent):
+    def __init__(self, agent: Union[LLMAgent, APIAgent]):
         self.agent = agent
 
     def run_chain(self, scenario_name: str) -> List[ToolCall]:
@@ -142,7 +142,7 @@ class CrossSessionMemoryAttack:
     Session 2-4: Agent acts on the poisoned memory.
     """
 
-    def __init__(self, agent: LLMAgent):
+    def __init__(self, agent: Union[LLMAgent, APIAgent]):
         self.agent = agent
 
     def poison_memory(self, fabricated_fact: str) -> List[ToolCall]:

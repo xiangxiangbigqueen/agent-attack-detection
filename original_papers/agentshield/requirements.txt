@@ -1,0 +1,32 @@
+# AgentShield runtime dependencies
+# Tested with Python 3.11 on Windows / Linux.
+# Versions pinned to the environment used for the experiments in
+# paper/agentshield_paper_simple.tex.
+
+# Core: AgentDojo benchmark + LLM clients
+agentdojo==0.1.35
+openai==2.28.0
+python-dotenv==1.2.2
+tiktoken==0.12.0
+
+# Data + analysis
+numpy==2.4.3
+pandas==2.3.3
+openpyxl==3.1.5
+tqdm==4.67.3
+pydantic==2.12.5
+
+# Plotting (paper/scripts/*)
+matplotlib==3.10.9
+
+# Self-supervised classifier (agentshield/train_classifier.py)
+scikit-learn==1.8.0
+torch==2.11.0
+transformers==5.4.0
+
+# Notes:
+# - Open-source models (Llama 3.3 70B, DeepSeek-V3) are accessed through
+#   Together AI's OpenAI-compatible endpoint, so no separate `together`
+#   SDK is needed.
+# - For local Ollama models, install Ollama separately and point the
+#   pipeline at http://localhost:11434/v1.

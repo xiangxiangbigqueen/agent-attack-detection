@@ -7,9 +7,10 @@ from datetime import datetime
 from typing import Any, Callable, Dict, List, Optional, Tuple
 from dataclasses import dataclass
 
-from openai import OpenAI
+# Lazy import: OpenAI is imported inside the method that uses it
+# from openai import OpenAI
 
-from agent.env import BankingEnvironment, Email
+from agent.env import BankingEnvironment, Document, Email
 from agent.core import ToolCall
 
 
@@ -257,10 +258,26 @@ class FunctionCallingAgent:
         self.call_history: List[ToolCall] = []
         self.messages: List[dict] = []
 
-        self.client = OpenAI(
-            api_key=config.api_key,
-            base_url=config.api_url,
-        )
+        self.client = None  # lazy init
+        self._openai_available = False
+
+    def _ensure_client(self):
+        """Lazy-init the OpenAI client."""
+        if self.client is not None:
+            return
+        try:
+            from openai import OpenAI
+            self.client = OpenAI(
+                api_key=self.config.api_key,
+                base_url=self.config.api_url,
+            )
+            self._openai_available = True
+        except ImportError:
+            self._openai_available = False
+            raise ImportError(
+                "openai package is required for FunctionCallingAgent. "
+                "Install with: pip install openai"
+            )
 
         # 注入初始邮件/文档环境（用于间接注入实验）
         self._injected_content: dict = {}
@@ -304,6 +321,7 @@ class FunctionCallingAgent:
         session_calls = []
 
         for _ in range(self.config.max_turns):
+            self._ensure_client()
             try:
                 response = self.client.chat.completions.create(
                     model=self.config.model,

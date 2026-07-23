@@ -1,0 +1,113 @@
+# Secrets
+.env
+*.key
+
+# Virtual environment
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Excel temp files (open file locks)
+~$*.xlsx
+~$*.xls
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude Code config (personal)
+.claude/
+
+# Stray LaTeX logs
+texput.log
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.out
+*.run.xml
+*.toc
+*.synctex.gz
+*.acn
+*.glo
+*.glsdefs
+*.ist
+*.slo
+
+# Generated HTML traces
+agentshield/runs/**/*.html
+
+# Failed experiment results (Qwen 2.5 72B — not serverless, all errors)
+agentshield/results/*Qwen2.5*
+
+# Incomplete/aborted baseline results from 2026-03-29 (credit ran out)
+agentshield/results/jisa_baseline/*_2026-03-29_*.json
+
+# Not part of this project
+Voices_of_the_Mountains_Deep_Learning_Based_Vocal_Error_Detection/
+Thesis Dissertations template style sheets_V5.2.dot
+
+# Internal/personal files (not for public release)
+CLAUDE.md
+paper/email_to_supervisor.md
+paper/research_ideas_*.md
+paper/melon_comparison_notes.md
+
+# Thesis submission artifacts (kept private until viva)
+thesis/
+docs/contribution_statement.tex
+docs/contribution_statement.md
+docs/contribution_statement.pdf
+docs/thesis_proposal_agentshield.md
+
+# Strategy / setup / superseded drafts (not for public release)
+docs/journal_publication_plan.md
+docs/openclaw_nemoclaw_research_notes.md
+docs/additional_analyses_todo.md
+docs/thesis_plan_v3_final.md
+docs/agentshield_project_map.canvas
+docs/agentshield_project_map.md
+docs/new_ideas_from_papers.md
+docs/project_map.md
+SETUP_WORK_MACHINE.md
+paper/agentshield_paper.tex
+paper/agentshield_paper.pdf
+paper/agentshield_paper.spl
+docs/mcp_security_research_report.md
+docs/meeting_presentation.tex
+docs/meeting_presentation.pdf
+docs/meeting_presentation.spl
+docs/meeting_presentation.aux
+docs/meeting_presentation.log
+docs/meeting_presentation.toc
+docs/meeting_presentation.out
+
+# Third-party UKH thesis Word doc (other people's metadata) and stranded image
+docs/guidelines/Thesis Guidelines V5.7.docx
+docs/threat_model_page-049.png
+Thesis Guidelines V5.7.docx
+
+# Humanization workflow (working files, not for public release)
+humanize/
+
+# arXiv submission helpers (build artifacts and copy-paste drafts)
+paper/arxiv_abstract.md
+paper/arxiv_submission.zip

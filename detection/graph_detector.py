@@ -431,6 +431,14 @@ class MultiLayerDetector:
         """Set training mode."""
         self.scorer.set_training(training)
 
+    def train_on(self, calls: List[ToolCall]):
+        """Train the behavioral baseline on benign tool call sequences.
+
+        This must be called with benign session data before detection;
+        otherwise the baseline remains empty, causing high false positive rates.
+        """
+        self.scorer.baseline.update(calls)
+
     def analyze_call(self, call: ToolCall) -> DetectionResult:
         """
         Analyze a single tool call through all detection layers.

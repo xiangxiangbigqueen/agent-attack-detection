@@ -1,0 +1,8 @@
+{
+  "n_benign_train": 50,
+  "n_benign_test": 20,
+  "n_attacks": 25,
+  "optimal_threshold": 5.0,
+  "optimal_dr": 0.52,
+  "optimal_fpr": 0.0
+}

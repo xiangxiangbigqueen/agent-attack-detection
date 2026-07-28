@@ -3,6 +3,7 @@ PURE REAL-DATA EXPERIMENT — All detectors on real DeepSeek API trajectories on
 No simulated data at all. 6 attack types × 8 variants + 80 benign.
 Uses existing banking environment (already proven).
 """
+import copy
 import os, sys, json, time, tempfile, urllib.request, urllib.error
 from collections import defaultdict
 
@@ -12,7 +13,7 @@ import numpy as np
 from agent.core import APIAgent, APIAgentConfig, make_banking_tools, ToolCall
 from detection.graph_detector import MultiLayerDetector, DetectorConfig, EvaluationMetrics
 
-API_KEY = "sk-8b2bbc2bdaf5423f9336097aec929aad"
+API_KEY = os.environ.get("DEEPSEEK_API_KEY", "")
 API_URL = "https://api.deepseek.com/chat/completions"
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 os.makedirs(DATA_DIR, exist_ok=True)
@@ -141,7 +142,8 @@ def run_session(task, is_attack=False):
             return None, []
 
 def detect_with_ours(calls, detector, threshold):
-    """Run our detector on a session's tool calls."""
+    """Run one isolated session against an immutable trained baseline."""
+    detector = copy.deepcopy(detector)
     detector.reset_session()
     for c in calls:
         r = detector.analyze_call(c)
@@ -271,16 +273,17 @@ def main():
     det.set_training(True)
     for calls in train_benign:
         det.train_on(calls)
-    # Calibrate threshold
-    scores = []
-    for calls in train_benign:
-        det.reset_session()
-        for c in calls:
-            r = det.analyze_call(c)
-            scores.append(r.layer_results.get("cumulative_score", 0))
-    th = max(0.5, float(np.percentile(scores, 95)))
-    det.config.alert_threshold = th
+    # Calibrate on isolated detector copies using one maximum score per session.
+    # This prevents order-dependent state from leaking into the evaluated runs.
     det.set_training(False)
+    session_max_scores = []
+    for calls in train_benign:
+        calibration_detector = copy.deepcopy(det)
+        calibration_detector.reset_session()
+        scores = [calibration_detector.analyze_call(c).layer_results.get("cumulative_score", 0) for c in calls]
+        session_max_scores.append(max(scores, default=0.0))
+    th = float(np.percentile(session_max_scores, 95)) if session_max_scores else 0.0
+    det.config.alert_threshold = th
     print(f"  Calibrated threshold: {th:.3f} (P95 of {len(scores)} training scores)", flush=True)
 
     # Evaluate all methods
@@ -291,19 +294,19 @@ def main():
     }
 
     results = {}
-    for name, fn in methods.items():
-        tp = fp = tn = fn = 0
+    for name, detector_fn in methods.items():
+        tp = fp = tn = false_negatives = 0
         for c in test_benign:
-            if fn(c): fp += 1
+            if detector_fn(c): fp += 1
             else: tn += 1
         for c in test_attacks:
-            if fn(c): tp += 1
-            else: fn += 1
-        dr = tp/(tp+fn) if (tp+fn)>0 else 0
+            if detector_fn(c): tp += 1
+            else: false_negatives += 1
+        dr = tp/(tp+false_negatives) if (tp+false_negatives)>0 else 0
         fpr = fp/(fp+tn) if (fp+tn)>0 else 0
         prec = tp/(tp+fp) if (tp+fp)>0 else 0
         f1 = 2*prec*dr/(prec+dr) if (prec+dr)>0 else 0
-        results[name] = {"dr": round(dr,4), "fpr": round(fpr,4), "f1": round(f1,4), "tp": tp, "fp": fp, "tn": tn, "fn": fn}
+        results[name] = {"dr": round(dr,4), "fpr": round(fpr,4), "f1": round(f1,4), "tp": tp, "fp": fp, "tn": tn, "fn": false_negatives}
 
     # Bootstrap CIs
     n_boot = 5000
@@ -312,9 +315,9 @@ def main():
     for b in range(n_boot):
         bi = rng.randint(0, len(test_benign), len(test_benign))
         ai = rng.randint(0, len(test_attacks), len(test_attacks))
-        for name, fn in methods.items():
-            tfp = sum(1 for i in bi if fn(test_benign[i]))
-            ttp = sum(1 for i in ai if fn(test_attacks[i]))
+        for name, detector_fn in methods.items():
+            tfp = sum(1 for i in bi if detector_fn(test_benign[i]))
+            ttp = sum(1 for i in ai if detector_fn(test_attacks[i]))
             boot_results[name]["drs"].append(ttp / len(test_attacks))
             boot_results[name]["fprs"].append(tfp / len(test_benign))
 

@@ -11,7 +11,7 @@ import numpy as np
 from agent.core import APIAgent, APIAgentConfig, make_banking_tools
 from detection.graph_detector import MultiLayerDetector, DetectorConfig
 
-API_KEY = "sk-8b2bbc2bdaf5423f9336097aec929aad"
+API_KEY = os.environ.get("DEEPSEEK_API_KEY", "")
 API_URL = "https://api.deepseek.com/chat/completions"
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 os.makedirs(DATA_DIR, exist_ok=True)

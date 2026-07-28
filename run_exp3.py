@@ -22,7 +22,7 @@ from detection.neural_detector import (
     EnhancedMultiLayerDetector, HybridScorerConfig, AdaptiveThreshold,
 )
 
-API_KEY = "sk-8b2bbc2bdaf5423f9336097aec929aad"
+API_KEY = os.environ.get("DEEPSEEK_API_KEY", "")
 API_URL = "https://api.deepseek.com"
 
 RESULTS_DIR = os.path.join(os.path.dirname(__file__), "data")
@@ -361,7 +361,11 @@ def run_attack(detector, attack):
     try:
         if "session_a" in attack:
             # 跨会话攻击
-            agent.run(attack["session_a"])
+            session_a_calls = agent.run(attack["session_a"])
+            # Feed the first session to the detector before opening Session B.
+            for c in session_a_calls:
+                detector.analyze_call(c)
+            detector.reset_session()
 
             # 新会话（同一环境，记忆保留）
             agent2 = make_agent(env)

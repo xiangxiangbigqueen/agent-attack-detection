@@ -64,7 +64,7 @@ AGENTSHIELD_HONEYTOOLS = [
 
 # AgentShield honeytokens (from real source code)
 AGENTSHIELD_HONEYTOKENS = [
-    "sk-proj-TRAP-a8f2k9d3m5n7p1q4r6s8t0",
+    "DEMO_HONEYTOKEN_DO_NOT_USE",
     "AdminPass_2026!@#Secure",
     "s3cret_TRAP",
 ]

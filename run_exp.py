@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from agent.core import APIAgent, APIAgentConfig, make_banking_tools, ToolCall
 from detection.graph_detector import MultiLayerDetector, DetectorConfig, EvaluationMetrics
 
-API_KEY = "sk-8b2bbc2bdaf5423f9336097aec929aad"
+API_KEY = os.environ.get("DEEPSEEK_API_KEY", "")
 API_URL = "https://api.deepseek.com/chat/completions"
 
 def make_agent(db_path=":memory:"):

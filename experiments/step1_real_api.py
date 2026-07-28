@@ -17,7 +17,7 @@ from detection.graph_detector import (
     MultiLayerDetector, DetectorConfig, EvaluationMetrics
 )
 
-API_KEY = "sk-8b2bbc2bdaf5423f9336097aec929aad"
+API_KEY = os.environ.get("DEEPSEEK_API_KEY", "")
 API_URL = "https://api.deepseek.com/chat/completions"
 RESULTS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
 os.makedirs(RESULTS_DIR, exist_ok=True)

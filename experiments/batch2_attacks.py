@@ -4,7 +4,7 @@ sys.path.insert(0, "C:/Users/28995/agent_attack_detection")
 os.environ["PYTHONIOENCODING"] = "utf-8"
 from agent.core import APIAgent, APIAgentConfig, make_banking_tools
 
-API_KEY = "sk-8b2bbc2bdaf5423f9336097aec929aad"
+API_KEY = os.environ.get("DEEPSEEK_API_KEY", "")
 API_URL = "https://api.deepseek.com/chat/completions"
 LOG_FILE = "C:/Users/28995/agent_attack_detection/experiments/data/pure_real_log.jsonl"
 os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)

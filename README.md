@@ -122,3 +122,7 @@ python run_exp3.py
 - [ ] Add cross-model transfer experiments (DeepSeek → GPT → Qwen)
 - [ ] Add GAMMAF standardized evaluation
 - [ ] Add k-fold cross-validation with statistical significance tests
+
+## Security configuration
+Set DEEPSEEK_API_KEY in your environment or copy .env.example to .env; do not commit API keys. Any key previously committed to this repository must be revoked and rotated.
+

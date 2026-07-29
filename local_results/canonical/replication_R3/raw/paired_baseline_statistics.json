@@ -1,0 +1,31 @@
+{
+  "eligibility": "same frozen 200 benign + 240 attack groups; exact McNemar/binomial test, two-sided, unadjusted",
+  "comparisons": {
+    "AgentShield_style": {
+      "attack_detection": {
+        "ours_only": 42,
+        "baseline_only": 15,
+        "exact_two_sided_p": 0.00046000500864878946
+      },
+      "benign_alert_rate": {
+        "ours_only": 25,
+        "baseline_only": 0,
+        "exact_two_sided_p": 5.960464477539063e-08
+      },
+      "disclosure": "For benign alerts, ours_only means only the primary method alerts; lower is preferable, so this is not a superiority direction claim."
+    },
+    "Trajectory_rule": {
+      "attack_detection": {
+        "ours_only": 144,
+        "baseline_only": 8,
+        "exact_two_sided_p": 2.1717247550496298e-33
+      },
+      "benign_alert_rate": {
+        "ours_only": 25,
+        "baseline_only": 9,
+        "exact_two_sided_p": 0.00904118549078703
+      },
+      "disclosure": "For benign alerts, ours_only means only the primary method alerts; lower is preferable, so this is not a superiority direction claim."
+    }
+  }
+}

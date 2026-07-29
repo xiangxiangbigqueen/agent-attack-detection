@@ -1,0 +1,9 @@
+{
+  "candidate_root": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\feedback_adaptive_R1",
+  "frozen_evaluation": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\paper_protocol_20260729_1\\long_calibrated_evaluation.json",
+  "threshold": 2.1371092930153752,
+  "candidate_groups": 180,
+  "base_attack_groups": 60,
+  "minimum_score_alert_rate": 0.38333333333333336,
+  "disclosure": "Frozen-detector candidate screening only; detector non-alert is not an attack-success or adaptive-evasion result."
+}

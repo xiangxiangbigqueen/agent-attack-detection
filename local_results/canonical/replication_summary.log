@@ -1,0 +1,8 @@
+{
+  "dr_mean": 0.6569444444444444,
+  "dr_sample_sd": 0.004811252243246864,
+  "fpr_mean": 0.125,
+  "fpr_sample_sd": 0.0,
+  "threshold_mean": 2.131362679265944,
+  "threshold_sample_sd": 0.005297043390936031
+}

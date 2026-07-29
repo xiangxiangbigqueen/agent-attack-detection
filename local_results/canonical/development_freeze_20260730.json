@@ -1,0 +1,44 @@
+{
+  "created_at_utc": "2026-07-29T16:34:29.573037+00:00",
+  "purpose": "R1--R3 are development/diagnostic evidence only; no post-freeze method change may report them as independent confirmation.",
+  "development_roots": {
+    "R1": {
+      "path": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\paper_protocol_20260729_1",
+      "files": 1240,
+      "sha256_tree": "373416929852bf2388bb228fffe7edf128ad1b16bcf9da8e8c3c09cb62f567ce"
+    },
+    "R2": {
+      "path": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\replication_R2\\raw",
+      "files": 604,
+      "sha256_tree": "2c96baf4538e8bdd40a0755a25e0b086b3478f22f1be3ed3e51943f9b4b50b7c"
+    },
+    "R3": {
+      "path": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\replication_R3\\raw",
+      "files": 668,
+      "sha256_tree": "f1bffb04997ba5706b012d09ae78f08c093962ec0b2c3ce5d032d04609cbd2c6"
+    },
+    "official_R1": {
+      "path": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\official_agentshield_R1",
+      "files": 857,
+      "sha256_tree": "f2afc74b7a9b29669b63eaa78e19568ccb8a07155027f0e7aa5720d062c41528"
+    },
+    "official_R2": {
+      "path": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\official_agentshield_R2",
+      "files": 857,
+      "sha256_tree": "05e44a81ebeda2205d3a7a4ec8c36dd01e7d13ab4ac337bbcfe855dad9d323d7"
+    },
+    "official_R3": {
+      "path": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\official_agentshield_R3",
+      "files": 857,
+      "sha256_tree": "8c2357f564b3875fab8314f0820c166b180cf6434ff760939eb1be70b23dc2be"
+    }
+  },
+  "code": {
+    "detection\\graph_detector.py": "6f14c5d87bd8846ad38508e6e2d26e3641c017afe8877486c535e0c9a20127fe",
+    "experiments\\canonical_protocol.py": "94f47507b3f9d0b7f7ba2a6e568e837639be9d1c1cd75adaac1220f138ad8273",
+    "experiments\\run_long_calibrated_evaluation.py": "8f4d43dd07257e193ad3871e252432f75d75afb31a2c4bc82f9831316ffff393",
+    "experiments\\run_long_calibrated_ablation.py": "3dae1ba349abe67d6a1512c04ee260e79e701d632b7a32bec1f602d47aeaf4a2",
+    "experiments\\evaluate_attack_outcomes.py": "b38dbf5aca9283f4d9f7f7ac92eed9c3c701af2a4f754fbd2433080e3cec968b"
+  },
+  "future_confirmation_rule": "Final performance claims require fresh R4/R5 trajectories collected after the revised detector protocol is frozen."
+}

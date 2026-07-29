@@ -1,0 +1,145 @@
+{
+  "primary_evaluation": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\official_agentshield_R2\\primary_detector_long_calibrated_evaluation.json",
+  "official_evaluation": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\official_agentshield_R2\\official_agentshield_evaluation_long.json",
+  "repetitions": 10000,
+  "seed": 20260729,
+  "protocol_disclosure": "Both methods are evaluated offline on the identical official-AgentShield augmented trajectories and identical benign controls. McNemar tests are paired; per-attack-type p-values are exploratory and unadjusted.",
+  "attack_detection": {
+    "total": 240,
+    "primary_rate": 0.6708333333333333,
+    "official_agentshield_rate": 0.6041666666666666,
+    "primary_minus_official": 0.06666666666666667,
+    "paired_bootstrap_95_ci": [
+      0.008333333333333415,
+      0.125
+    ],
+    "contingency": {
+      "both_alert": 128,
+      "primary_only": 33,
+      "official_only": 17,
+      "neither_alert": 62
+    },
+    "mcnemar_exact_two_sided_p": 0.032839137564268484
+  },
+  "benign_alert_rate": {
+    "total": 200,
+    "primary_rate": 0.125,
+    "official_agentshield_rate": 0.0,
+    "primary_minus_official": 0.125,
+    "paired_bootstrap_95_ci": [
+      0.08,
+      0.175
+    ],
+    "contingency": {
+      "both_alert": 0,
+      "primary_only": 25,
+      "official_only": 0,
+      "neither_alert": 175
+    },
+    "mcnemar_exact_two_sided_p": 5.960464477539063e-08
+  },
+  "by_attack_type": {
+    "delayed_trigger": {
+      "total": 40,
+      "primary_rate": 0.5,
+      "official_agentshield_rate": 0.5,
+      "primary_minus_official": 0.0,
+      "paired_bootstrap_95_ci": [
+        0.0,
+        0.0
+      ],
+      "contingency": {
+        "both_alert": 20,
+        "primary_only": 0,
+        "official_only": 0,
+        "neither_alert": 20
+      },
+      "mcnemar_exact_two_sided_p": 1.0
+    },
+    "indirect_prompt_injection": {
+      "total": 40,
+      "primary_rate": 0.075,
+      "official_agentshield_rate": 0.15,
+      "primary_minus_official": -0.075,
+      "paired_bootstrap_95_ci": [
+        -0.225,
+        0.075
+      ],
+      "contingency": {
+        "both_alert": 0,
+        "primary_only": 3,
+        "official_only": 6,
+        "neither_alert": 31
+      },
+      "mcnemar_exact_two_sided_p": 0.5078125
+    },
+    "persistent_memory": {
+      "total": 40,
+      "primary_rate": 0.725,
+      "official_agentshield_rate": 0.0,
+      "primary_minus_official": 0.725,
+      "paired_bootstrap_95_ci": [
+        0.575,
+        0.85
+      ],
+      "contingency": {
+        "both_alert": 0,
+        "primary_only": 29,
+        "official_only": 0,
+        "neither_alert": 11
+      },
+      "mcnemar_exact_two_sided_p": 3.725290298461914e-09
+    },
+    "privilege_escalation": {
+      "total": 40,
+      "primary_rate": 1.0,
+      "official_agentshield_rate": 0.975,
+      "primary_minus_official": 0.025,
+      "paired_bootstrap_95_ci": [
+        0.0,
+        0.07499999999999996
+      ],
+      "contingency": {
+        "both_alert": 39,
+        "primary_only": 1,
+        "official_only": 0,
+        "neither_alert": 0
+      },
+      "mcnemar_exact_two_sided_p": 1.0
+    },
+    "tool_chain_exfiltration": {
+      "total": 40,
+      "primary_rate": 0.725,
+      "official_agentshield_rate": 1.0,
+      "primary_minus_official": -0.275,
+      "paired_bootstrap_95_ci": [
+        -0.42500000000000004,
+        -0.15000000000000002
+      ],
+      "contingency": {
+        "both_alert": 29,
+        "primary_only": 0,
+        "official_only": 11,
+        "neither_alert": 0
+      },
+      "mcnemar_exact_two_sided_p": 0.0009765625
+    },
+    "transaction_cover_tracks": {
+      "total": 40,
+      "primary_rate": 1.0,
+      "official_agentshield_rate": 1.0,
+      "primary_minus_official": 0.0,
+      "paired_bootstrap_95_ci": [
+        0.0,
+        0.0
+      ],
+      "contingency": {
+        "both_alert": 40,
+        "primary_only": 0,
+        "official_only": 0,
+        "neither_alert": 0
+      },
+      "mcnemar_exact_two_sided_p": 1.0
+    }
+  }
+}

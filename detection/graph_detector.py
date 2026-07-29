@@ -39,6 +39,10 @@ class DetectorConfig:
     # Scoring
     use_cumulative: bool = True
     cumulative_weight: float = 0.4
+    use_transition_frequency: bool = True
+    use_structure: bool = True
+    use_parameter_rules: bool = True
+    use_tool_combination_rules: bool = True
 
     # Cross-session
     cross_session_decay: float = 0.3   # Lower weight for cross-session edges
@@ -348,33 +352,35 @@ class GraphAnomalyScorer:
         weights = []
 
         # ── Single-round signals ──
-        param_score = self._check_parameter_anomaly(call)
+        param_score = self._check_parameter_anomaly(call) if self.config.use_parameter_rules else 0.0
         if param_score > 0:
             scores.append(param_score)
             weights.append(0.30)
 
-        combo_score = self._check_tool_combination(call)
+        combo_score = self._check_tool_combination(call) if self.config.use_tool_combination_rules else 0.0
         if combo_score > 0:
             scores.append(combo_score)
             weights.append(0.30)
 
-        if len(self.graph.call_sequence) >= 2:
+        if self.config.use_transition_frequency and len(self.graph.call_sequence) >= 2:
             prev_tool = self.graph.call_sequence[-2].tool_name
             expected_p = self.baseline.transition_probability(prev_tool, call.tool_name)
             transition_score = 1.0 - expected_p
             scores.append(transition_score)
             weights.append(0.15)
 
-        expected_freq = self.baseline.expected_frequency(call.tool_name)
-        freq_score = 1.0 - expected_freq
-        scores.append(freq_score)
-        weights.append(0.10)
+        if self.config.use_transition_frequency:
+            expected_freq = self.baseline.expected_frequency(call.tool_name)
+            freq_score = 1.0 - expected_freq
+            scores.append(freq_score)
+            weights.append(0.10)
 
         # ── Multi-round signals ──
-        features = self.graph.compute_graph_features(self.baseline)
-        structure_score = (features["entropy"] * 0.5 + features["novelty_ratio"] * 0.5)
-        scores.append(structure_score)
-        weights.append(0.15)
+        if self.config.use_structure:
+            features = self.graph.compute_graph_features(self.baseline)
+            structure_score = (features["entropy"] * 0.5 + features["novelty_ratio"] * 0.5)
+            scores.append(structure_score)
+            weights.append(0.15)
 
         # Weighted combination — weights sum to 1.0
         total_w = sum(weights) or 1.0
@@ -382,8 +388,8 @@ class GraphAnomalyScorer:
 
         # Store instant signal
         self._instant_signal = max(
-            self._check_parameter_anomaly(call),
-            self._check_tool_combination(call)
+            self._check_parameter_anomaly(call) if self.config.use_parameter_rules else 0.0,
+            self._check_tool_combination(call) if self.config.use_tool_combination_rules else 0.0,
         )
 
         # Update cumulative score (EWMA, unbounded)

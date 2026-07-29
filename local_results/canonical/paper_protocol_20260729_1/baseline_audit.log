@@ -1,0 +1,17 @@
+{
+  "primary_benign_test_groups": 200,
+  "primary_attack_groups": 240,
+  "baseline_methods": [
+    "AgentShield_style",
+    "Trajectory_rule"
+  ],
+  "baseline_disclosure": "Independent reimplementations; not official baseline code.",
+  "eligible_for_paired_significance_test": false,
+  "reason": "Existing baseline outputs were independently reimplemented and evaluated on the earlier 100-benign short-length test protocol; the primary result uses 200 benign test groups after long-length calibration. Paired significance would be invalid until every baseline is run on exactly the frozen primary trajectories and protocol.",
+  "required_before_claiming_comparison": [
+    "verified official baseline source or explicit independent-reimplementation label",
+    "same 200 benign and 240 attack groups",
+    "pre-specified calibration for each baseline",
+    "stored per-group predictions"
+  ]
+}

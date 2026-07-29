@@ -1,0 +1,33 @@
+{
+  "disclosure": "Exploratory post-confirmation ablations; each variant uses its own validation-maximum threshold.",
+  "variants": {
+    "TrajectoryOnly": {
+      "threshold": 5.004054133889495,
+      "fpr": 0.0,
+      "dr": 0.2833333333333333,
+      "fp": 0,
+      "tp": 68
+    },
+    "NoCrossSession": {
+      "threshold": 5.004054133889495,
+      "fpr": 0.0,
+      "dr": 0.2791666666666667,
+      "fp": 0,
+      "tp": 67
+    },
+    "NoTransitionFrequency": {
+      "threshold": 5e-324,
+      "fpr": 0.0,
+      "dr": 0.0,
+      "fp": 0,
+      "tp": 0
+    },
+    "NoCumulative": {
+      "threshold": 0.996017917937235,
+      "fpr": 0.0,
+      "dr": 0.95,
+      "fp": 0,
+      "tp": 228
+    }
+  }
+}

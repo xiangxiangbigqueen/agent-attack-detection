@@ -1,0 +1,8 @@
+{
+  "official_repository": "https://github.com/Yassin-H-Rassul/AgentShield",
+  "source_archive_sha256": "EA08A9424F276E726DE3E96E747F3418C89FD65EDC7F21FC3E1D2BA31F59048E",
+  "protocol_version": "2026-07-30.confirmation-v1",
+  "model": "deepseek-chat",
+  "parameter_adapter": "confirmation-v2 predeclared local banking mapping",
+  "session_records_expected": 570
+}

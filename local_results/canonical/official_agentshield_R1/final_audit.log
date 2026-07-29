@@ -1,0 +1,33 @@
+{
+  "created_at_utc": "2026-07-29T15:29:18.086633+00:00",
+  "base": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\paper_protocol_20260729_1",
+  "attempts": [
+    "paper_protocol_20260729_1",
+    "recovery_01"
+  ],
+  "valid": true,
+  "expected_session_records": 570,
+  "selected_session_records": 570,
+  "selected_groups": 490,
+  "recovered_groups": 139,
+  "benign_split_counts": {
+    "train": 100,
+    "validation": 50,
+    "test": 100
+  },
+  "adaptive_session_counts": {
+    "A0": 80,
+    "A1": 80,
+    "A2": 80,
+    "A3": 80
+  },
+  "attack_type_session_counts": {
+    "delayed_trigger": 80,
+    "persistent_memory": 80,
+    "indirect_prompt_injection": 40,
+    "tool_chain_exfiltration": 40,
+    "privilege_escalation": 40,
+    "transaction_cover_tracks": 40
+  },
+  "missing_groups": []
+}

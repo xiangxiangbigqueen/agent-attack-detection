@@ -1,0 +1,92 @@
+{
+  "raw_root": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\replication_R3\\raw",
+  "long_root": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\replication_R3\\long_benign_calibration",
+  "threshold_protocol": "P95 independent short+long benign validation per variant",
+  "variants": {
+    "Full": {
+      "threshold": 2.1303034814002455,
+      "benign_test": 200,
+      "attack_test": 240,
+      "dr": 0.6625,
+      "fpr": 0.125,
+      "tp": 159,
+      "fp": 25,
+      "dr_wilson_95": [
+        0.6005,
+        0.7193
+      ],
+      "fpr_wilson_95": [
+        0.0861,
+        0.178
+      ]
+    },
+    "NoCrossSession": {
+      "threshold": 2.1303034814002455,
+      "benign_test": 200,
+      "attack_test": 240,
+      "dr": 0.5083333333333333,
+      "fpr": 0.125,
+      "tp": 122,
+      "fp": 25,
+      "dr_wilson_95": [
+        0.4455,
+        0.571
+      ],
+      "fpr_wilson_95": [
+        0.0861,
+        0.178
+      ]
+    },
+    "NoTransitionFrequency": {
+      "threshold": 1.607014225729041,
+      "benign_test": 200,
+      "attack_test": 240,
+      "dr": 0.31666666666666665,
+      "fpr": 0.125,
+      "tp": 76,
+      "fp": 25,
+      "dr_wilson_95": [
+        0.2611,
+        0.378
+      ],
+      "fpr_wilson_95": [
+        0.0861,
+        0.178
+      ]
+    },
+    "NoStructure": {
+      "threshold": 2.555956386971412,
+      "benign_test": 200,
+      "attack_test": 240,
+      "dr": 0.6958333333333333,
+      "fpr": 0.125,
+      "tp": 167,
+      "fp": 25,
+      "dr_wilson_95": [
+        0.6349,
+        0.7506
+      ],
+      "fpr_wilson_95": [
+        0.0861,
+        0.178
+      ]
+    },
+    "NoCumulative": {
+      "threshold": 2.1303034814002455,
+      "benign_test": 200,
+      "attack_test": 240,
+      "dr": 0.6208333333333333,
+      "fpr": 0.125,
+      "tp": 149,
+      "fp": 25,
+      "dr_wilson_95": [
+        0.558,
+        0.6799
+      ],
+      "fpr_wilson_95": [
+        0.0861,
+        0.178
+      ]
+    }
+  }
+}

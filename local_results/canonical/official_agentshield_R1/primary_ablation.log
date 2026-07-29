@@ -1,0 +1,92 @@
+{
+  "raw_root": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\official_agentshield_R1",
+  "long_root": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\official_agentshield_R1\\long_benign_calibration",
+  "threshold_protocol": "P95 independent short+long benign validation per variant",
+  "variants": {
+    "Full": {
+      "threshold": 2.1283101015512877,
+      "benign_test": 200,
+      "attack_test": 240,
+      "dr": 0.6416666666666667,
+      "fpr": 0.125,
+      "tp": 154,
+      "fp": 25,
+      "dr_wilson_95": [
+        0.5792,
+        0.6997
+      ],
+      "fpr_wilson_95": [
+        0.0861,
+        0.178
+      ]
+    },
+    "NoCrossSession": {
+      "threshold": 2.1283101015512877,
+      "benign_test": 200,
+      "attack_test": 240,
+      "dr": 0.5166666666666667,
+      "fpr": 0.125,
+      "tp": 124,
+      "fp": 25,
+      "dr_wilson_95": [
+        0.4537,
+        0.5791
+      ],
+      "fpr_wilson_95": [
+        0.0861,
+        0.178
+      ]
+    },
+    "NoTransitionFrequency": {
+      "threshold": 1.607014225729041,
+      "benign_test": 200,
+      "attack_test": 240,
+      "dr": 0.3333333333333333,
+      "fpr": 0.125,
+      "tp": 80,
+      "fp": 25,
+      "dr_wilson_95": [
+        0.2767,
+        0.3952
+      ],
+      "fpr_wilson_95": [
+        0.0861,
+        0.178
+      ]
+    },
+    "NoStructure": {
+      "threshold": 2.5530365455230535,
+      "benign_test": 200,
+      "attack_test": 240,
+      "dr": 0.7208333333333333,
+      "fpr": 0.125,
+      "tp": 173,
+      "fp": 25,
+      "dr_wilson_95": [
+        0.6609,
+        0.7738
+      ],
+      "fpr_wilson_95": [
+        0.0861,
+        0.178
+      ]
+    },
+    "NoCumulative": {
+      "threshold": 2.1283101015512877,
+      "benign_test": 200,
+      "attack_test": 240,
+      "dr": 0.5791666666666667,
+      "fpr": 0.125,
+      "tp": 139,
+      "fp": 25,
+      "dr_wilson_95": [
+        0.5159,
+        0.6399
+      ],
+      "fpr_wilson_95": [
+        0.0861,
+        0.178
+      ]
+    }
+  }
+}

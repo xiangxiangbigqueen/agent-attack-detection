@@ -1,0 +1,37 @@
+{
+  "bootstrap_repetitions": 10000,
+  "seed": 20260729,
+  "main_ci95": {
+    "dr": [
+      0.9098039215686274,
+      0.9696969696969697
+    ],
+    "fpr": [
+      0.0594059405940594,
+      0.18627450980392157
+    ],
+    "f1": [
+      0.923076923076923,
+      0.9652351738241308
+    ]
+  },
+  "baseline_disclosure": "Independent reimplementations; not official baseline code.",
+  "baseline_metrics": {
+    "AgentShield_style": {
+      "tp": 130,
+      "fp": 0,
+      "dr": 0.5416666666666666,
+      "fpr": 0.0,
+      "precision": 1.0,
+      "f1": 0.7027027027027027
+    },
+    "Trajectory_rule": {
+      "tp": 22,
+      "fp": 9,
+      "dr": 0.09166666666666666,
+      "fpr": 0.09,
+      "precision": 0.7096774193548387,
+      "f1": 0.16236162361623613
+    }
+  }
+}

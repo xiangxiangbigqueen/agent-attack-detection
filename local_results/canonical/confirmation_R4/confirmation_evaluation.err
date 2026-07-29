@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "C:\Users\19546\agent-attack-detection\experiments\evaluate_confirmation.py", line 119, in <module>
+    main()
+  File "C:\Users\19546\agent-attack-detection\experiments\evaluate_confirmation.py", line 87, in main
+    long_test = select_long(args.long_root, "test", 100)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\19546\agent-attack-detection\experiments\evaluate_confirmation.py", line 49, in select_long
+    raise RuntimeError(f"expected {expected} long benign {split} records, found {len(rows)}")
+RuntimeError: expected 100 long benign test records, found 69

@@ -1,0 +1,50 @@
+{
+  "threshold": 0.7030083099470854,
+  "support": {
+    "1": {
+      "attack": 14,
+      "benign": 78,
+      "matched": 14
+    },
+    "2": {
+      "attack": 31,
+      "benign": 18,
+      "matched": 18
+    },
+    "3": {
+      "attack": 21,
+      "benign": 3,
+      "matched": 3
+    },
+    "4": {
+      "attack": 38,
+      "benign": 1,
+      "matched": 1
+    },
+    "5": {
+      "attack": 43,
+      "benign": 25,
+      "matched": 25
+    },
+    "6": {
+      "attack": 30,
+      "benign": 25,
+      "matched": 25
+    },
+    "7": {
+      "attack": 40,
+      "benign": 25,
+      "matched": 25
+    },
+    "8": {
+      "attack": 16,
+      "benign": 25,
+      "matched": 16
+    }
+  },
+  "effective_per_class": 127,
+  "dr": 0.889763779527559,
+  "fpr": 0.8110236220472441,
+  "tp": 113,
+  "fp": 103
+}

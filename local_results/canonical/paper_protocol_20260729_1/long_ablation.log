@@ -1,0 +1,92 @@
+{
+  "raw_root": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\paper_protocol_20260729_1",
+  "long_root": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\paper_protocol_20260729_1\\long_benign_calibration",
+  "threshold_protocol": "P95 independent short+long benign validation per variant",
+  "variants": {
+    "Full": {
+      "threshold": 2.1371092930153752,
+      "benign_test": 200,
+      "attack_test": 240,
+      "dr": 0.6541666666666667,
+      "fpr": 0.125,
+      "tp": 157,
+      "fp": 25,
+      "dr_wilson_95": [
+        0.592,
+        0.7115
+      ],
+      "fpr_wilson_95": [
+        0.0861,
+        0.178
+      ]
+    },
+    "NoCrossSession": {
+      "threshold": 2.1371092930153752,
+      "benign_test": 200,
+      "attack_test": 240,
+      "dr": 0.48333333333333334,
+      "fpr": 0.125,
+      "tp": 116,
+      "fp": 25,
+      "dr_wilson_95": [
+        0.4209,
+        0.5463
+      ],
+      "fpr_wilson_95": [
+        0.0861,
+        0.178
+      ]
+    },
+    "NoTransitionFrequency": {
+      "threshold": 1.607014225729041,
+      "benign_test": 200,
+      "attack_test": 240,
+      "dr": 0.2708333333333333,
+      "fpr": 0.125,
+      "tp": 65,
+      "fp": 25,
+      "dr_wilson_95": [
+        0.2185,
+        0.3303
+      ],
+      "fpr_wilson_95": [
+        0.0861,
+        0.178
+      ]
+    },
+    "NoStructure": {
+      "threshold": 2.566980815464285,
+      "benign_test": 200,
+      "attack_test": 240,
+      "dr": 0.6708333333333333,
+      "fpr": 0.125,
+      "tp": 161,
+      "fp": 25,
+      "dr_wilson_95": [
+        0.6091,
+        0.7272
+      ],
+      "fpr_wilson_95": [
+        0.0861,
+        0.178
+      ]
+    },
+    "NoCumulative": {
+      "threshold": 2.1371092930153752,
+      "benign_test": 200,
+      "attack_test": 240,
+      "dr": 0.6333333333333333,
+      "fpr": 0.125,
+      "tp": 152,
+      "fp": 25,
+      "dr_wilson_95": [
+        0.5707,
+        0.6918
+      ],
+      "fpr_wilson_95": [
+        0.0861,
+        0.178
+      ]
+    }
+  }
+}

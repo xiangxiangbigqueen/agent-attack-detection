@@ -1,0 +1,62 @@
+{
+  "seed": 20260729,
+  "repetitions": 1000,
+  "threshold": 0.7030083099470854,
+  "common_length_support": {
+    "1": {
+      "benign": 78,
+      "attack": 14,
+      "matched_per_class": 14
+    },
+    "2": {
+      "benign": 18,
+      "attack": 31,
+      "matched_per_class": 18
+    },
+    "3": {
+      "benign": 3,
+      "attack": 21,
+      "matched_per_class": 3
+    },
+    "4": {
+      "benign": 1,
+      "attack": 38,
+      "matched_per_class": 1
+    }
+  },
+  "excluded_lengths": {
+    "benign_only": [],
+    "attack_only": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  "effective_groups_per_class": 36,
+  "metrics": {
+    "dr": {
+      "mean": 0.6111111111110975,
+      "ci95": [
+        0.6111111111111112,
+        0.6111111111111112
+      ]
+    },
+    "fpr": {
+      "mean": 0.3333333333333318,
+      "ci95": [
+        0.3333333333333333,
+        0.3333333333333333
+      ]
+    },
+    "f1": {
+      "mean": 0.6285714285714223,
+      "ci95": [
+        0.6285714285714287,
+        0.6285714285714287
+      ]
+    }
+  }
+}

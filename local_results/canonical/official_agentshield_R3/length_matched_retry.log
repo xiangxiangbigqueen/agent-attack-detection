@@ -1,0 +1,38 @@
+{
+  "matched_attack_groups": 120,
+  "matched_benign_groups": 120,
+  "attack_detection": {
+    "total": 120,
+    "primary_rate": 0.75,
+    "official_agentshield_rate": 0.7333333333333333,
+    "primary_minus_official": 0.016666666666666666,
+    "paired_bootstrap_95_ci": [
+      -0.025000000000000022,
+      0.05833333333333335
+    ],
+    "contingency": {
+      "both_alert": 86,
+      "primary_only": 4,
+      "official_only": 2,
+      "neither_alert": 28
+    },
+    "mcnemar_exact_two_sided_p": 0.6875
+  },
+  "benign_alert_rate": {
+    "total": 120,
+    "primary_rate": 0.125,
+    "official_agentshield_rate": 0.0,
+    "primary_minus_official": 0.125,
+    "paired_bootstrap_95_ci": [
+      0.06666666666666667,
+      0.19166666666666668
+    ],
+    "contingency": {
+      "both_alert": 0,
+      "primary_only": 15,
+      "official_only": 0,
+      "neither_alert": 105
+    },
+    "mcnemar_exact_two_sided_p": 6.103515625e-05
+  }
+}

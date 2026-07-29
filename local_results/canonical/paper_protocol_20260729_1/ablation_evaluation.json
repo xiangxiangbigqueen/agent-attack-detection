@@ -1,0 +1,80 @@
+{
+  "threshold_protocol": "P95 validation benign per variant",
+  "variants": {
+    "Full": {
+      "threshold": 0.7030083099470854,
+      "dr": 0.9416666666666667,
+      "fpr": 0.12,
+      "tp": 226,
+      "fp": 12,
+      "dr_wilson_95": [
+        0.9045,
+        0.9649
+      ],
+      "fpr_wilson_95": [
+        0.07,
+        0.1981
+      ]
+    },
+    "NoCrossSession": {
+      "threshold": 0.7030083099470854,
+      "dr": 0.8458333333333333,
+      "fpr": 0.12,
+      "tp": 203,
+      "fp": 12,
+      "dr_wilson_95": [
+        0.7947,
+        0.886
+      ],
+      "fpr_wilson_95": [
+        0.07,
+        0.1981
+      ]
+    },
+    "NoTransitionFrequency": {
+      "threshold": 0.33333333333333337,
+      "dr": 0.775,
+      "fpr": 0.12,
+      "tp": 186,
+      "fp": 12,
+      "dr_wilson_95": [
+        0.7181,
+        0.8233
+      ],
+      "fpr_wilson_95": [
+        0.07,
+        0.1981
+      ]
+    },
+    "NoStructure": {
+      "threshold": 1.2704913812056668,
+      "dr": 0.9416666666666667,
+      "fpr": 0.1,
+      "tp": 226,
+      "fp": 10,
+      "dr_wilson_95": [
+        0.9045,
+        0.9649
+      ],
+      "fpr_wilson_95": [
+        0.0552,
+        0.1744
+      ]
+    },
+    "NoCumulative": {
+      "threshold": 0.7030083099470854,
+      "dr": 0.9416666666666667,
+      "fpr": 0.13,
+      "tp": 226,
+      "fp": 13,
+      "dr_wilson_95": [
+        0.9045,
+        0.9649
+      ],
+      "fpr_wilson_95": [
+        0.0776,
+        0.2098
+      ]
+    }
+  }
+}

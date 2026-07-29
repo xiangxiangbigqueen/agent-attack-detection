@@ -1,0 +1,15 @@
+{
+  "full_attack_detection": {
+    "detected": 144,
+    "total": 240,
+    "dr": 0.6
+  },
+  "full_benign_alert_rate": 0.0,
+  "successful_attack_subset": {
+    "detected": 144,
+    "total": 144,
+    "dr": 1.0,
+    "objective_successes": 144
+  },
+  "output": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\official_agentshield_R1\\official_agentshield_evaluation_short.json"
+}

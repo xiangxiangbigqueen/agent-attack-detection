@@ -1,128 +1,119 @@
-# Agent Attack Detection
+# Cross-Session Tool-Trajectory Detection for LLM Agents
 
-LLM Agent Multi-Round Attack Detection via Cross-Session Behavior Graph Analysis
+This repository is the reproducibility package for an empirical study of multi-round attacks against tool-using LLM agents. It contains the detector, API-executed experimental protocol, raw local experiment records, analysis scripts, an official-baseline adapter, and a submission-style manuscript.
 
-Detection of multi-round attacks (delayed trigger, gradual escalation, memory poisoning, tool abuse, indirect injection) against LLM agents using a combination of:
+**Current scientific status:** this is not a production-ready detector and this repository does not claim one. The independent R4/R5 confirmation shows low false-positive rates but limited recall for successful attacks. The central contribution is a frozen evaluation protocol and an auditable account of the detection--false-alarm trade-off.
 
-- **Cross-Round Behavior Graph** — directed graph of tool call relationships across sessions
-- **Enhanced Graph Features** — motif counts, path analysis, PageRank entropy, category transitions
-- **Content-Aware Embedding** — SBERT-based semantic analysis of tool call parameters
-- **Adaptive Threshold** — Statistical Process Control (SPC) for dynamic anomaly thresholding
-- **GNN Support** — Optional GAT-style graph attention network for learned anomaly detection
+Chinese summary: 本项目不是“高分检测器已可部署”的宣传版本。R4/R5 独立确认实验表明：误报低，但对成功攻击的召回有限；项目的价值在于冻结协议、可复现轨迹数据和诚实的机制诊断。
 
-## Architecture
+## Repository map
 
-```
-User Query → LLM Agent (function calling) → Tool Calls
-                                                ↓
-┌────────────── EnhancedMultiLayerDetector ──────────────┐
-│  Layer 1: Honeytoken/Honeytool detection               │
-│  Layer 2: Enhanced Behavior Graph analysis              │
-│    ├─ Base: diversity, density, entropy, novelty        │
-│    ├─ Enhanced: triangle count, PageRank, reciprocity   │
-│    ├─ Category: tool category transition anomalies      │
-│    └─ Temporal: burst detection, interval analysis      │
-│  Layer 3: Multi-dimension anomaly scoring               │
-│    ├─ Parameter anomaly (single-round)                  │
-│    ├─ Tool combination anomaly (single-round)           │
-│    ├─ Content anomaly (embedding-based)        ← NEW    │
-│    ├─ Transition + frequency anomaly (baseline)         │
-│    └─ Graph structure anomaly (multi-round)             │
-│  Layer 4: Decision                                       │
-│    ├─ Adaptive threshold (SPC, 3-sigma)        ← NEW    │
-│    └─ Fixed threshold fallback                          │
-└─────────────────────────────────────────────────────────┘
-```
+| Path | Contents |
+| --- | --- |
+| `agent/` | Tool-using banking agent, environment, and function-calling adapter. |
+| `detection/` | Cross-session/trajectory scoring implementation. |
+| `attack/` | Attack scenario definitions used by legacy experiments. |
+| `experiments/` | Protocol construction, API collectors, evaluators, statistics, baseline adapter, and paper builders. |
+| `local_results/canonical/` | Frozen R1--R3 development artifacts; independent R4/R5 records, metrics, and paper tables/figures. |
+| `external_baselines/AgentShield_official_main.zip` | Archived public official AgentShield source used for the adapter; see the provenance section below. |
+| `tests/` | Unit tests for protocol, collection schema, evaluator, outcomes, and injection handling. |
+| `output/pdf/` | Submission-style manuscript, editable LaTeX source, and generated figures. |
+| `docs/EXPERIMENT_HANDOFF.md` | Detailed handoff: all decisions, runs, data locations, metrics, risks, and next actions. |
 
-## Experimental Results
+## Headline independent results
 
-Evaluated on **DeepSeek API (function calling)** with a stateful banking environment.  
-5 attack categories × 3 variants = 15 attack scenarios + 20 benign training tasks + 10 benign test tasks.
+The trajectory-only candidate was selected using development runs R1--R3, frozen, and then evaluated on two new API-executed runs (R4/R5). Each confirmation run contains 240 attack groups and 200 test-normal groups. The threshold is the smallest representable float above the maximum of 100 benign validation group scores; test data never set the threshold.
 
-| Attack Category | Detection Rate | Avg Confidence |
-|---|---|---|
-| Delayed Trigger (Compliance Disguise) | **3/3 = 100%** | 2.236 |
-| Gradual Privilege Escalation | **3/3 = 100%** | 2.954 |
-| Memory Poisoning + Cross-Session | **3/3 = 100%** | 2.993 |
-| Tool Abuse + Cover Tracks | **3/3 = 100%** | 3.004 |
-| Indirect Injection (via content) | **1/3 = 33.3%** | 2.750 |
-| **Overall DR** | **86.7% (13/15)** | — |
+| Metric | R4 | R5 | Macro mean +/- sample SD |
+| --- | ---: | ---: | ---: |
+| All-attempt detection | 28.3% [22.5, 34.2] | 29.6% [23.8, 35.4] | 29.0% +/- 0.9% |
+| Successful-attack recall | 41.9% [34.4, 49.4] | 43.8% [36.3, 51.9] | 42.8% +/- 1.3% |
+| False-positive rate | 0.0% [0.0, 0.0] | 0.5% [0.0, 1.5] | 0.25% +/- 0.35% |
+| Exact length-matched detection | 22.2% [14.5, 29.9] | 25.7% [17.7, 33.6] | -- |
 
-> **Note:** The new `run_exp3.py` fixes the baseline training bug and adds content-aware detection.
-> See [Known Issues](#known-issues) for details on previous bugs.
+Intervals are 95% group bootstrap intervals. Full values, denominators, and exact matching strata are in `local_results/canonical/confirmation_paper_artifacts/confirmation_summary.json`.
 
-## Attack Taxonomy
+## Important interpretation
 
-| # | Category | Mechanism | Detection Signal |
-|---|----------|-----------|-----------------|
-| 1 | Delayed Trigger | Session A: inject via compliance disguise → Session B: trigger on benign query | Cross-session cumulative score |
-| 2 | Gradual Escalation | Multi-turn chain: benign steps → malicious step → cover tracks | Graph entropy + novelty ratio + category transitions |
-| 3 | Memory Poisoning | Session A: store poisoned memory → Session B: LLM acts on it | Cross-session graph structure change |
-| 4 | Tool Abuse + Cover Tracks | Execute malicious operation → delete evidence | High-density multi-tool chains + temporal burst |
-| 5 | Indirect Injection | Malicious content in email/document → LLM reads and follows | Content-triggered anomaly (embedding-based) |
+- The measured cross-session component provides almost no gain in the post-confirmation diagnostic: 28.3% to 27.9% in R4 and 29.6% to 29.2% in R5 when removed.
+- Transition/frequency signals are necessary under the frozen calibration; removing them gives 0% all-attempt detection in both runs.
+- Removing cumulative scoring gives 95%/100%, but this was discovered after R4/R5. It is **exploratory**, not a confirmatory replacement. A preregistered R6/R7 replication is required before making a new method claim.
+- Official AgentShield measurements are from separate honeytool/honeytoken-protected executions. They are descriptive, not paired comparisons and not evidence of a causal performance difference.
+- Only `deepseek-chat` and the banking-style tool sandbox are in scope. No cross-model or real-world deployment claim is supported.
 
-## Project Structure
+## Paper
 
-```
-agent-attack-detection/
-├── main.py                  # Entry point
-├── run_exp.py               # Basic DeepSeek API experiments (v1)
-├── run_exp2.py              # Function Calling API + stateful env (v2)
-├── run_exp3.py              # Enhanced detector + content-aware (v3)  ← NEW
-├── agent/
-│   ├── core.py              # Legacy agent (LLMAgent, APIAgent)
-│   ├── env.py               # BankingEnvironment with real state
-│   ├── function_agent.py    # Function Calling Agent (OpenAI SDK)
-│   └── types.py             # ToolCall data types
-├── attack/
-│   └── scenarios.py         # Attack scenario definitions
-├── detection/
-│   ├── __init__.py
-│   ├── graph_detector.py    # Base Cross-Round Behavior Graph Detector
-│   ├── neural_detector.py   # Enhanced: GNN + content + adaptive     ← NEW
-│   └── baselines.py         # AgentShield + Leong + Random baselines
-├── experiments/             # Legacy experiment scripts
-├── data/                    # Results output
-└── figures/                 # Generated figures
+- Submission PDF: `output/pdf/cross_session_trajectory_detection_revised.pdf`
+- Editable source: `output/pdf/cross_session_trajectory_detection_revised.tex`
+- Local PDF composer: `experiments/build_submission_pdf.py`
+- Figure generator: `experiments/generate_submission_assets.py`
+
+The manuscript deliberately changes the thesis from a claimed high-performing graph detector to a replicated measurement study of cross-session tool-trajectory detection. Before submitting, replace the author affiliation/contact details and adapt bibliography/page limits to the target venue.
+
+## Reproduce the analyses
+
+Python 3.11 is recommended. Create a fresh environment; the ignored `external_baselines/agentshield_py311/` directory is a machine-local virtual environment and is not part of the repository.
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+python -m unittest discover -s tests -v
+
+# Regenerate data-backed publication assets and the manuscript.
+python experiments\generate_submission_assets.py
+python experiments\build_submission_pdf.py
 ```
 
-## Setup
+API collection requires a valid `DEEPSEEK_API_KEY` in the environment. Never place it in a tracked file.
 
-```bash
-# Base dependencies
-pip install numpy networkx openai sentence-transformers scikit-learn
-
-# Optional: GNN support
-pip install torch
-
-# Run experiment
-python run_exp3.py
+```powershell
+$env:DEEPSEEK_API_KEY = "<your-key>"
+python experiments\collect_confirmation_api.py --run R4
+python experiments\collect_confirmation_long_benign.py --run R4
+python experiments\evaluate_confirmation.py --run R4
+python experiments\analyze_confirmation.py
 ```
 
-## Experiment Versions
+Collection scripts can incur API cost. Do not rerun R4/R5 into their existing directories: preserve the frozen records and use a fresh run label for any new collection.
 
-| Script | Detector | Features | Status |
-|--------|----------|----------|--------|
-| `run_exp.py` | `APIAgent` + `MultiLayerDetector` | Basic hand-crafted features | Legacy |
-| `run_exp2.py` | `FunctionCallingAgent` + `MultiLayerDetector` | Function calling API, stateful env | Active (has known bugs) |
-| `run_exp3.py` | `FunctionCallingAgent` + `EnhancedMultiLayerDetector` | Content embedding, enhanced features, adaptive threshold | ✅ Recommended |
+## Protocol and data
 
-## Known Issues (已修复)
+The protocol is documented as machine-readable artifacts:
 
-- ~~**Baseline training bug**: `BehavioralBaseline.update()` was never called during training in `MultiLayerDetector.analyze_call()`.~~ ✅ **已修复** — `train_on()` 方法已添加到 `MultiLayerDetector` 和 `EnhancedMultiLayerDetector`，`run_exp3.py` 在训练阶段显式调用。
-- ~~**Document import missing**: `function_agent.py` 中 `inject_content()` 使用了未导入的 `Document` 类。~~ ✅ **已修复** — 已添加 `from agent.env import Document`。
-- The legacy experiments in `experiments/` use simulated data (not real LLM calls). Use `run_exp3.py` for real API experiments.
+- `local_results/canonical/development_freeze_20260730.json`: freezes R1--R3 as development/diagnostic evidence only, including source and data-tree hashes.
+- `local_results/canonical/confirmation_preregistration_20260730.json`: locked R4/R5 candidate, thresholds, sample sizes, primary metrics, and reporting rules.
+- `local_results/canonical/confirmation_paper_artifacts/confirmation_summary.json`: paper-ready R4/R5 and official-baseline summaries.
+- `local_results/canonical/confirmation_paper_artifacts/primary_successful_attack_misses.csv`: error taxonomy for the 183 missed successful attacks.
 
-## To-Do (Next Steps)
+The `local_results/` directory contains approximately 10,000 JSON/JSONL/CSV records (about 14 MiB) and is intentionally versioned. Raw records are synthetic banking-sandbox trajectories; they contain no real customer data or API credentials. Some attack fixtures deliberately contain **fake trap strings** resembling credentials. They are test data, not usable secrets.
 
-- [ ] Run `run_exp3.py` with DeepSeek API to validate DR improvement
-- [ ] Add adaptive attack evaluation (white-box attacker knowing detector internals)
-- [ ] Compare against MCPShield, FragBench, CASPIAN baselines
-- [ ] Add ROC curves and AUC metrics
-- [ ] Add cross-model transfer experiments (DeepSeek → GPT → Qwen)
-- [ ] Add GAMMAF standardized evaluation
-- [ ] Add k-fold cross-validation with statistical significance tests
+## Official baseline provenance
 
-## Security configuration
-Set DEEPSEEK_API_KEY in your environment or copy .env.example to .env; do not commit API keys. Any key previously committed to this repository must be revoked and rotated.
+The archival source `external_baselines/AgentShield_official_main.zip` has SHA-256:
 
+```text
+EA08A9424F276E726DE3E96E747F3418C89FD65EDC7F21FC3E1D2BA31F59048E
+```
+
+The adapter scripts are `experiments/collect_confirmation_official_agentshield.py`, `experiments/collect_confirmation_official_long.py`, and `experiments/evaluate_confirmation_official_agentshield.py`. The public source itself may be obtained from the upstream project; its local extracted copy and the local Python environment are excluded from Git to avoid vendoring third-party source and 1+ GiB of machine-specific binaries.
+
+## Security and versioning rules
+
+- `.env`, virtual environments, temporary renderings, and local installation logs are ignored.
+- Do not commit keys, provider responses containing real secrets, or private chat transcripts. This repository contains a decision record, not private conversations.
+- Do not overwrite frozen R1--R5 data. New hypotheses require a new labeled run and a new preregistration file.
+- Do not report R4/R5 exploratory ablations as independent confirmation.
+- Do not call the separate AgentShield comparison paired, statistically significant, or a direct winner.
+
+## What to read first
+
+1. `docs/EXPERIMENT_HANDOFF.md`
+2. `local_results/canonical/confirmation_preregistration_20260730.json`
+3. `local_results/canonical/confirmation_paper_artifacts/confirmation_summary.json`
+4. `output/pdf/cross_session_trajectory_detection_revised.pdf`
+5. `experiments/evaluate_confirmation.py` and `detection/graph_detector.py`
+
+## License and attribution
+
+This repository includes an archived copy of publicly obtained official AgentShield source only for reproduction provenance. Respect upstream licensing and citation requirements before redistributing or modifying that baseline.

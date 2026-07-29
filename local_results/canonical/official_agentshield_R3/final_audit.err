@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "C:\Users\19546\agent-attack-detection\experiments\validate_canonical_dataset.py", line 94, in <module>
+    main()
+  File "C:\Users\19546\agent-attack-detection\experiments\validate_canonical_dataset.py", line 87, in main
+    destination.write_text(json.dumps(result, indent=2), encoding="utf-8")
+  File "C:\Users\19546\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\pathlib.py", line 1078, in write_text
+    with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\19546\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: 'C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\paper_protocol_20260729_1\\data_audit.json'

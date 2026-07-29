@@ -1,0 +1,257 @@
+{
+  "disclosure": "Primary detector and official AgentShield were executed in separate environments because the official baseline requires honeytools and honeytokens. These figures are descriptive separate-execution comparisons, not paired significance tests.",
+  "runs": [
+    {
+      "run": "R4",
+      "primary": {
+        "all_attempts": {
+          "rate": 0.2833333333333333,
+          "total": 240,
+          "bootstrap_95_ci": [
+            0.225,
+            0.3416666666666667
+          ]
+        },
+        "successful_attacks": {
+          "rate": 0.41875,
+          "total": 160,
+          "bootstrap_95_ci": [
+            0.34375,
+            0.49375
+          ]
+        },
+        "benign": {
+          "rate": 0.0,
+          "total": 200,
+          "bootstrap_95_ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "length_matched": {
+          "matching_protocol": "exact 1:1 group-total tool-call matching without replacement",
+          "matched_attack_groups": 117,
+          "matched_benign_groups": 117,
+          "strata": {
+            "2": {
+              "attack_available": 30,
+              "benign_available": 17,
+              "matched_per_class": 17
+            },
+            "3": {
+              "attack_available": 54,
+              "benign_available": 7,
+              "matched_per_class": 7
+            },
+            "4": {
+              "attack_available": 21,
+              "benign_available": 3,
+              "matched_per_class": 3
+            },
+            "5": {
+              "attack_available": 11,
+              "benign_available": 29,
+              "matched_per_class": 11
+            },
+            "6": {
+              "attack_available": 28,
+              "benign_available": 27,
+              "matched_per_class": 27
+            },
+            "7": {
+              "attack_available": 28,
+              "benign_available": 27,
+              "matched_per_class": 27
+            },
+            "8": {
+              "attack_available": 34,
+              "benign_available": 24,
+              "matched_per_class": 24
+            },
+            "9": {
+              "attack_available": 6,
+              "benign_available": 1,
+              "matched_per_class": 1
+            }
+          },
+          "attack_detection": {
+            "rate": 0.2222222222222222,
+            "total": 117,
+            "bootstrap_95_ci": [
+              0.1452991452991453,
+              0.29914529914529914
+            ]
+          },
+          "benign_alert_rate": {
+            "rate": 0.0,
+            "total": 117,
+            "bootstrap_95_ci": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "official_agentshield_separate_execution": {
+        "all_attempts": {
+          "rate": 0.6708333333333333,
+          "total": 240,
+          "bootstrap_95_ci": [
+            0.6083333333333333,
+            0.7291666666666666
+          ]
+        },
+        "successful_attacks": {
+          "total": 161,
+          "alerts": 161,
+          "rate": 1.0
+        },
+        "benign": {
+          "rate": 0.005,
+          "total": 200,
+          "bootstrap_95_ci": [
+            0.0,
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "run": "R5",
+      "primary": {
+        "all_attempts": {
+          "rate": 0.29583333333333334,
+          "total": 240,
+          "bootstrap_95_ci": [
+            0.2375,
+            0.3541666666666667
+          ]
+        },
+        "successful_attacks": {
+          "rate": 0.4375,
+          "total": 160,
+          "bootstrap_95_ci": [
+            0.3625,
+            0.51875
+          ]
+        },
+        "benign": {
+          "rate": 0.005,
+          "total": 200,
+          "bootstrap_95_ci": [
+            0.0,
+            0.015
+          ]
+        },
+        "length_matched": {
+          "matching_protocol": "exact 1:1 group-total tool-call matching without replacement",
+          "matched_attack_groups": 113,
+          "matched_benign_groups": 113,
+          "strata": {
+            "2": {
+              "attack_available": 30,
+              "benign_available": 14,
+              "matched_per_class": 14
+            },
+            "3": {
+              "attack_available": 55,
+              "benign_available": 7,
+              "matched_per_class": 7
+            },
+            "4": {
+              "attack_available": 23,
+              "benign_available": 4,
+              "matched_per_class": 4
+            },
+            "5": {
+              "attack_available": 11,
+              "benign_available": 28,
+              "matched_per_class": 11
+            },
+            "6": {
+              "attack_available": 28,
+              "benign_available": 27,
+              "matched_per_class": 27
+            },
+            "7": {
+              "attack_available": 24,
+              "benign_available": 26,
+              "matched_per_class": 24
+            },
+            "8": {
+              "attack_available": 31,
+              "benign_available": 26,
+              "matched_per_class": 26
+            }
+          },
+          "attack_detection": {
+            "rate": 0.25663716814159293,
+            "total": 113,
+            "bootstrap_95_ci": [
+              0.17699115044247787,
+              0.336283185840708
+            ]
+          },
+          "benign_alert_rate": {
+            "rate": 0.008849557522123894,
+            "total": 113,
+            "bootstrap_95_ci": [
+              0.0,
+              0.02654867256637168
+            ]
+          }
+        }
+      },
+      "official_agentshield_separate_execution": {
+        "all_attempts": {
+          "rate": 0.6666666666666666,
+          "total": 240,
+          "bootstrap_95_ci": [
+            0.6041666666666666,
+            0.725
+          ]
+        },
+        "successful_attacks": {
+          "total": 160,
+          "alerts": 160,
+          "rate": 1.0
+        },
+        "benign": {
+          "rate": 0.0,
+          "total": 200,
+          "bootstrap_95_ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "primary_all_attempt_dr": {
+      "mean": 0.2895833333333333,
+      "sample_sd": 0.008838834764831853
+    },
+    "primary_successful_attack_recall": {
+      "mean": 0.428125,
+      "sample_sd": 0.013258252147247759
+    },
+    "primary_fpr": {
+      "mean": 0.0025,
+      "sample_sd": 0.0035355339059327377
+    },
+    "official_all_attempt_dr_separate_execution": {
+      "mean": 0.66875,
+      "sample_sd": 0.0029462782549439376
+    },
+    "official_successful_attack_recall_separate_execution": {
+      "mean": 1.0,
+      "sample_sd": 0.0
+    },
+    "official_fpr_separate_execution": {
+      "mean": 0.0025,
+      "sample_sd": 0.0035355339059327377
+    }
+  },
+  "successful_attack_miss_count": 183
+}

@@ -1,0 +1,10 @@
+{
+  "candidate_groups": 180,
+  "base_attack_groups": 60,
+  "selection_policy": "minimum official-AgentShield alert; deterministic direct/concise/gradual tie-break",
+  "selected_alert_rate": 0.5,
+  "selected_objective_successes": 28,
+  "selected_objective_success_rate": 0.4666666666666667,
+  "alerts_on_selected_objective_successes": 28,
+  "selected_successful_attack_detection_rate": 1.0
+}

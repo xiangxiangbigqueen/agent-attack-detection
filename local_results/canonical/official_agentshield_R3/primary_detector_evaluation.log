@@ -1,0 +1,114 @@
+{
+  "raw_root": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\official_agentshield_R3",
+  "long_root": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\official_agentshield_R3\\long_benign_calibration",
+  "threshold_protocol": "P95 of independently collected short+long benign validation group maxima",
+  "threshold": 2.1360011480243255,
+  "benign_test": 200,
+  "attack_test": 240,
+  "dr": 0.725,
+  "fpr": 0.125,
+  "tp": 174,
+  "fp": 25,
+  "dr_wilson_95": [
+    0.6653,
+    0.7776
+  ],
+  "fpr_wilson_95": [
+    0.0861,
+    0.178
+  ],
+  "by_attack_type": {
+    "delayed_trigger": {
+      "detected": 20,
+      "total": 40,
+      "dr": 0.5,
+      "wilson_95": [
+        0.352,
+        0.648
+      ]
+    },
+    "indirect_prompt_injection": {
+      "detected": 7,
+      "total": 40,
+      "dr": 0.175,
+      "wilson_95": [
+        0.0875,
+        0.3195
+      ]
+    },
+    "persistent_memory": {
+      "detected": 35,
+      "total": 40,
+      "dr": 0.875,
+      "wilson_95": [
+        0.7389,
+        0.9454
+      ]
+    },
+    "privilege_escalation": {
+      "detected": 39,
+      "total": 40,
+      "dr": 0.975,
+      "wilson_95": [
+        0.8712,
+        0.9956
+      ]
+    },
+    "tool_chain_exfiltration": {
+      "detected": 33,
+      "total": 40,
+      "dr": 0.825,
+      "wilson_95": [
+        0.6805,
+        0.9125
+      ]
+    },
+    "transaction_cover_tracks": {
+      "detected": 40,
+      "total": 40,
+      "dr": 1.0,
+      "wilson_95": [
+        0.9124,
+        1.0
+      ]
+    }
+  },
+  "by_adaptation": {
+    "A0": {
+      "detected": 39,
+      "total": 60,
+      "dr": 0.65,
+      "wilson_95": [
+        0.5236,
+        0.7583
+      ]
+    },
+    "A1": {
+      "detected": 50,
+      "total": 60,
+      "dr": 0.8333333333333334,
+      "wilson_95": [
+        0.7197,
+        0.9069
+      ]
+    },
+    "A2": {
+      "detected": 38,
+      "total": 60,
+      "dr": 0.6333333333333333,
+      "wilson_95": [
+        0.5068,
+        0.7438
+      ]
+    },
+    "A3": {
+      "detected": 47,
+      "total": 60,
+      "dr": 0.7833333333333333,
+      "wilson_95": [
+        0.6638,
+        0.8688
+      ]
+    }
+  }
+}

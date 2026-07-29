@@ -1,0 +1,54 @@
+{
+  "raw_root": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\paper_protocol_20260729_1",
+  "long_root": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\paper_protocol_20260729_1\\long_benign_calibration",
+  "control_root": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\paper_protocol_20260729_1\\length_control_stratified",
+  "threshold": 2.1371092930153752,
+  "support": {
+    "1": {
+      "attack": 14,
+      "benign": 78,
+      "matched": 14
+    },
+    "2": {
+      "attack": 31,
+      "benign": 18,
+      "matched": 18
+    },
+    "3": {
+      "attack": 21,
+      "benign": 3,
+      "matched": 3
+    },
+    "4": {
+      "attack": 38,
+      "benign": 1,
+      "matched": 1
+    },
+    "5": {
+      "attack": 43,
+      "benign": 50,
+      "matched": 43
+    },
+    "6": {
+      "attack": 30,
+      "benign": 50,
+      "matched": 30
+    },
+    "7": {
+      "attack": 40,
+      "benign": 50,
+      "matched": 40
+    },
+    "8": {
+      "attack": 16,
+      "benign": 50,
+      "matched": 16
+    }
+  },
+  "effective_per_class": 165,
+  "dr": 0.7575757575757576,
+  "fpr": 0.09696969696969697,
+  "tp": 125,
+  "fp": 16,
+  "disclosure": "Matched groups are truncated deterministically by collection order; this is a length-confounding diagnostic, not the primary estimate."
+}

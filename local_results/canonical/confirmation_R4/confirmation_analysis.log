@@ -1,0 +1,89 @@
+{
+  "all_attempts": {
+    "rate": 0.2833333333333333,
+    "total": 240,
+    "bootstrap_95_ci": [
+      0.225,
+      0.3416666666666667
+    ]
+  },
+  "successful_attacks": {
+    "rate": 0.41875,
+    "total": 160,
+    "bootstrap_95_ci": [
+      0.34375,
+      0.49375
+    ]
+  },
+  "benign": {
+    "rate": 0.0,
+    "total": 200,
+    "bootstrap_95_ci": [
+      0.0,
+      0.0
+    ]
+  },
+  "length_matched": {
+    "matching_protocol": "exact 1:1 group-total tool-call matching without replacement",
+    "matched_attack_groups": 117,
+    "matched_benign_groups": 117,
+    "strata": {
+      "2": {
+        "attack_available": 30,
+        "benign_available": 17,
+        "matched_per_class": 17
+      },
+      "3": {
+        "attack_available": 54,
+        "benign_available": 7,
+        "matched_per_class": 7
+      },
+      "4": {
+        "attack_available": 21,
+        "benign_available": 3,
+        "matched_per_class": 3
+      },
+      "5": {
+        "attack_available": 11,
+        "benign_available": 29,
+        "matched_per_class": 11
+      },
+      "6": {
+        "attack_available": 28,
+        "benign_available": 27,
+        "matched_per_class": 27
+      },
+      "7": {
+        "attack_available": 28,
+        "benign_available": 27,
+        "matched_per_class": 27
+      },
+      "8": {
+        "attack_available": 34,
+        "benign_available": 24,
+        "matched_per_class": 24
+      },
+      "9": {
+        "attack_available": 6,
+        "benign_available": 1,
+        "matched_per_class": 1
+      }
+    },
+    "attack_detection": {
+      "rate": 0.2222222222222222,
+      "total": 117,
+      "bootstrap_95_ci": [
+        0.1452991452991453,
+        0.29914529914529914
+      ]
+    },
+    "benign_alert_rate": {
+      "rate": 0.0,
+      "total": 117,
+      "bootstrap_95_ci": [
+        0.0,
+        0.0
+      ]
+    }
+  }
+}

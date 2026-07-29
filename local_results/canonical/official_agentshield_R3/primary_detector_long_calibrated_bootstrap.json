@@ -1,0 +1,17 @@
+{
+  "evaluation": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\official_agentshield_R3\\primary_detector_long_calibrated_evaluation.json",
+  "repetitions": 10000,
+  "seed": 20260729,
+  "dr_ci95": [
+    0.6666666666666666,
+    0.7791666666666667
+  ],
+  "fpr_ci95": [
+    0.08,
+    0.17
+  ],
+  "f1_ci95": [
+    0.7505720823798628,
+    0.8318584070796461
+  ]
+}

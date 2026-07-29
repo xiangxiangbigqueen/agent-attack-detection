@@ -1,0 +1,18 @@
+{
+  "attack_detection": {
+    "rate": 0.6,
+    "total": 240,
+    "bootstrap_95_ci": [
+      0.5375,
+      0.6625
+    ]
+  },
+  "benign_alert_rate": {
+    "rate": 0.0,
+    "total": 200,
+    "bootstrap_95_ci": [
+      0.0,
+      0.0
+    ]
+  }
+}

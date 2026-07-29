@@ -1,0 +1,22 @@
+{
+  "validation": {
+    "total": 100,
+    "alerts": 0,
+    "rate": 0.0
+  },
+  "benign_test": {
+    "total": 200,
+    "alerts": 0,
+    "rate": 0.0
+  },
+  "attack_test": {
+    "total": 240,
+    "alerts": 68,
+    "rate": 0.2833333333333333
+  },
+  "successful_attack_test": {
+    "total": 160,
+    "alerts": 67,
+    "rate": 0.41875
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "attack_detection": {
+    "total": 240,
+    "primary_rate": 0.725,
+    "official_agentshield_rate": 0.6041666666666666,
+    "primary_minus_official": 0.12083333333333333,
+    "paired_bootstrap_95_ci": [
+      0.0625,
+      0.1791666666666667
+    ],
+    "contingency": {
+      "both_alert": 132,
+      "primary_only": 42,
+      "official_only": 13,
+      "neither_alert": 53
+    },
+    "mcnemar_exact_two_sided_p": 0.00011361060320691507
+  },
+  "benign_alert_rate": {
+    "total": 200,
+    "primary_rate": 0.125,
+    "official_agentshield_rate": 0.0,
+    "primary_minus_official": 0.125,
+    "paired_bootstrap_95_ci": [
+      0.08,
+      0.175
+    ],
+    "contingency": {
+      "both_alert": 0,
+      "primary_only": 25,
+      "official_only": 0,
+      "neither_alert": 175
+    },
+    "mcnemar_exact_two_sided_p": 5.960464477539063e-08
+  }
+}

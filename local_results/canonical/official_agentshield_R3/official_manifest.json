@@ -1,0 +1,6 @@
+{
+  "official_repository": "https://github.com/Yassin-H-Rassul/AgentShield",
+  "source_archive_sha256": "EA08A9424F276E726DE3E96E747F3418C89FD65EDC7F21FC3E1D2BA31F59048E",
+  "model": "deepseek-chat",
+  "protocol": "canonical protocol with official AgentShield layers; adapted parameter-name mapping fixed before collection"
+}

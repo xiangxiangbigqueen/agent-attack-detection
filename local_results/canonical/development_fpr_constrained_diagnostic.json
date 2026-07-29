@@ -1,0 +1,219 @@
+{
+  "status": "development_only_not_independent_confirmation",
+  "selection_rule": "R4/R5 candidate: trajectory_only, threshold = next representable float above the maximum R4/R5 validation score; no instant rule alerts.",
+  "calibration_rule": "Observed validation alerts must be zero; no test score can select a threshold.",
+  "variants": {
+    "full": {
+      "R1": {
+        "threshold": 2.1371092930153757,
+        "validation_groups": 100,
+        "validation_alerts": 0,
+        "benign_test": {
+          "total": 200,
+          "alerts": 0
+        },
+        "attack_test": {
+          "total": 240,
+          "alerts": 157
+        },
+        "successful_attack_test": {
+          "total": 130,
+          "alerts": 110
+        }
+      },
+      "R2": {
+        "threshold": 2.126675263382212,
+        "validation_groups": 100,
+        "validation_alerts": 0,
+        "benign_test": {
+          "total": 200,
+          "alerts": 0
+        },
+        "attack_test": {
+          "total": 240,
+          "alerts": 157
+        },
+        "successful_attack_test": {
+          "total": 132,
+          "alerts": 119
+        }
+      },
+      "R3": {
+        "threshold": 2.130303481400246,
+        "validation_groups": 100,
+        "validation_alerts": 0,
+        "benign_test": {
+          "total": 200,
+          "alerts": 0
+        },
+        "attack_test": {
+          "total": 240,
+          "alerts": 159
+        },
+        "successful_attack_test": {
+          "total": 132,
+          "alerts": 117
+        }
+      }
+    },
+    "no_structure": {
+      "R1": {
+        "threshold": 2.5669808154642855,
+        "validation_groups": 100,
+        "validation_alerts": 0,
+        "benign_test": {
+          "total": 200,
+          "alerts": 0
+        },
+        "attack_test": {
+          "total": 240,
+          "alerts": 161
+        },
+        "successful_attack_test": {
+          "total": 130,
+          "alerts": 113
+        }
+      },
+      "R2": {
+        "threshold": 2.5505953621662876,
+        "validation_groups": 100,
+        "validation_alerts": 0,
+        "benign_test": {
+          "total": 200,
+          "alerts": 0
+        },
+        "attack_test": {
+          "total": 240,
+          "alerts": 164
+        },
+        "successful_attack_test": {
+          "total": 132,
+          "alerts": 118
+        }
+      },
+      "R3": {
+        "threshold": 2.5559563869714124,
+        "validation_groups": 100,
+        "validation_alerts": 0,
+        "benign_test": {
+          "total": 200,
+          "alerts": 0
+        },
+        "attack_test": {
+          "total": 240,
+          "alerts": 167
+        },
+        "successful_attack_test": {
+          "total": 132,
+          "alerts": 116
+        }
+      }
+    },
+    "no_structure_no_parameter": {
+      "R1": {
+        "threshold": 2.5616534932723485,
+        "validation_groups": 100,
+        "validation_alerts": 0,
+        "benign_test": {
+          "total": 200,
+          "alerts": 0
+        },
+        "attack_test": {
+          "total": 240,
+          "alerts": 180
+        },
+        "successful_attack_test": {
+          "total": 130,
+          "alerts": 127
+        }
+      },
+      "R2": {
+        "threshold": 2.5452426673002297,
+        "validation_groups": 100,
+        "validation_alerts": 0,
+        "benign_test": {
+          "total": 200,
+          "alerts": 0
+        },
+        "attack_test": {
+          "total": 240,
+          "alerts": 175
+        },
+        "successful_attack_test": {
+          "total": 132,
+          "alerts": 129
+        }
+      },
+      "R3": {
+        "threshold": 2.5506036921053545,
+        "validation_groups": 100,
+        "validation_alerts": 0,
+        "benign_test": {
+          "total": 200,
+          "alerts": 0
+        },
+        "attack_test": {
+          "total": 240,
+          "alerts": 180
+        },
+        "successful_attack_test": {
+          "total": 132,
+          "alerts": 129
+        }
+      }
+    },
+    "trajectory_only": {
+      "R1": {
+        "threshold": 2.5616534932723485,
+        "validation_groups": 100,
+        "validation_alerts": 0,
+        "benign_test": {
+          "total": 200,
+          "alerts": 0
+        },
+        "attack_test": {
+          "total": 240,
+          "alerts": 183
+        },
+        "successful_attack_test": {
+          "total": 130,
+          "alerts": 130
+        }
+      },
+      "R2": {
+        "threshold": 2.5452426673002297,
+        "validation_groups": 100,
+        "validation_alerts": 0,
+        "benign_test": {
+          "total": 200,
+          "alerts": 0
+        },
+        "attack_test": {
+          "total": 240,
+          "alerts": 178
+        },
+        "successful_attack_test": {
+          "total": 132,
+          "alerts": 132
+        }
+      },
+      "R3": {
+        "threshold": 2.5506036921053545,
+        "validation_groups": 100,
+        "validation_alerts": 0,
+        "benign_test": {
+          "total": 200,
+          "alerts": 0
+        },
+        "attack_test": {
+          "total": 240,
+          "alerts": 183
+        },
+        "successful_attack_test": {
+          "total": 132,
+          "alerts": 132
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "raw_root": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\official_agentshield_R3",
+  "long_root": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\official_agentshield_R3\\long_benign_calibration",
+  "threshold_protocol": "P95 independent short+long benign validation per variant",
+  "variants": {
+    "Full": {
+      "threshold": 2.1360011480243255,
+      "benign_test": 200,
+      "attack_test": 240,
+      "dr": 0.725,
+      "fpr": 0.125,
+      "tp": 174,
+      "fp": 25,
+      "dr_wilson_95": [
+        0.6653,
+        0.7776
+      ],
+      "fpr_wilson_95": [
+        0.0861,
+        0.178
+      ]
+    },
+    "NoCrossSession": {
+      "threshold": 2.1360011480243255,
+      "benign_test": 200,
+      "attack_test": 240,
+      "dr": 0.55,
+      "fpr": 0.125,
+      "tp": 132,
+      "fp": 25,
+      "dr_wilson_95": [
+        0.4868,
+        0.6117
+      ],
+      "fpr_wilson_95": [
+        0.0861,
+        0.178
+      ]
+    },
+    "NoTransitionFrequency": {
+      "threshold": 1.607014225729041,
+      "benign_test": 200,
+      "attack_test": 240,
+      "dr": 0.32916666666666666,
+      "fpr": 0.125,
+      "tp": 79,
+      "fp": 25,
+      "dr_wilson_95": [
+        0.2728,
+        0.3909
+      ],
+      "fpr_wilson_95": [
+        0.0861,
+        0.178
+      ]
+    },
+    "NoStructure": {
+      "threshold": 2.564426013196862,
+      "benign_test": 200,
+      "attack_test": 240,
+      "dr": 0.7666666666666667,
+      "fpr": 0.125,
+      "tp": 184,
+      "fp": 25,
+      "dr_wilson_95": [
+        0.7092,
+        0.8157
+      ],
+      "fpr_wilson_95": [
+        0.0861,
+        0.178
+      ]
+    },
+    "NoCumulative": {
+      "threshold": 2.1360011480243255,
+      "benign_test": 200,
+      "attack_test": 240,
+      "dr": 0.6666666666666666,
+      "fpr": 0.125,
+      "tp": 160,
+      "fp": 25,
+      "dr_wilson_95": [
+        0.6048,
+        0.7233
+      ],
+      "fpr_wilson_95": [
+        0.0861,
+        0.178
+      ]
+    }
+  }
+}

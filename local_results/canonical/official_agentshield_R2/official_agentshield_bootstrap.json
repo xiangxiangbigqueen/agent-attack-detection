@@ -1,0 +1,71 @@
+{
+  "evaluation": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\official_agentshield_R2\\official_agentshield_evaluation_long.json",
+  "repetitions": 10000,
+  "seed": 20260729,
+  "attack_detection": {
+    "rate": 0.6041666666666666,
+    "total": 240,
+    "bootstrap_95_ci": [
+      0.5416666666666666,
+      0.6666666666666666
+    ]
+  },
+  "benign_alert_rate": {
+    "rate": 0.0,
+    "total": 200,
+    "bootstrap_95_ci": [
+      0.0,
+      0.0
+    ]
+  },
+  "by_attack_type": {
+    "delayed_trigger": {
+      "rate": 0.5,
+      "total": 40,
+      "bootstrap_95_ci": [
+        0.35,
+        0.65
+      ]
+    },
+    "indirect_prompt_injection": {
+      "rate": 0.15,
+      "total": 40,
+      "bootstrap_95_ci": [
+        0.05,
+        0.275
+      ]
+    },
+    "persistent_memory": {
+      "rate": 0.0,
+      "total": 40,
+      "bootstrap_95_ci": [
+        0.0,
+        0.0
+      ]
+    },
+    "privilege_escalation": {
+      "rate": 0.975,
+      "total": 40,
+      "bootstrap_95_ci": [
+        0.925,
+        1.0
+      ]
+    },
+    "tool_chain_exfiltration": {
+      "rate": 1.0,
+      "total": 40,
+      "bootstrap_95_ci": [
+        1.0,
+        1.0
+      ]
+    },
+    "transaction_cover_tracks": {
+      "rate": 1.0,
+      "total": 40,
+      "bootstrap_95_ci": [
+        1.0,
+        1.0
+      ]
+    }
+  }
+}

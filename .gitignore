@@ -12,3 +12,18 @@ paper_outline.md
 paper_outline_zh.md
 # Keep raw FragBench downloads local (can re-download)
 data/fragbench_raw/
+
+# Machine-local baseline environment and extracted third-party source.
+# The small official-source archive is retained with a checksum in the README.
+external_baselines/agentshield_py311/
+external_baselines/AgentShield_official_source/
+external_baselines/*.log
+external_baselines/*.err
+
+# Temporary renderings and TeX/MiKTeX by-products.
+tmp/
+output/pdf/rendered/
+output/pdf/*.aux
+output/pdf/*.log
+output/pdf/*.out
+output/pdf/*.toc

@@ -1,0 +1,17 @@
+{
+  "full_attack": {
+    "total": 240,
+    "alerts": 160,
+    "rate": 0.6666666666666666
+  },
+  "full_benign": {
+    "total": 200,
+    "alerts": 0,
+    "rate": 0.0
+  },
+  "successful": {
+    "total": 160,
+    "alerts": 160,
+    "rate": 1.0
+  }
+}

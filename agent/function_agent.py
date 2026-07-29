@@ -21,6 +21,11 @@ class AgentConfig:
     model: str = "deepseek-chat"
     max_turns: int = 15
     temperature: float = 0.1
+    # Optional experiment adapters.  Defaults preserve the original banking
+    # agent exactly; callers must explicitly opt in to a different tool view.
+    tool_schemas: Optional[List[dict]] = None
+    tool_dispatch: Optional[Dict[str, Callable[..., Any]]] = None
+    tool_observer: Optional[Callable[[ToolCall], None]] = None
 
 
 # 工具 schema 定义 — DeepSeek/OpenAI function calling 格式
@@ -257,6 +262,10 @@ class FunctionCallingAgent:
         self.turn_count = 0
         self.call_history: List[ToolCall] = []
         self.messages: List[dict] = []
+        # Content may be injected before any request creates the API client.
+        self._injected_content: dict = {}
+        self.last_run_status = "not_started"
+        self.last_error_type: Optional[str] = None
 
         self.client = None  # lazy init
         self._openai_available = False
@@ -280,8 +289,6 @@ class FunctionCallingAgent:
             )
 
         # 注入初始邮件/文档环境（用于间接注入实验）
-        self._injected_content: dict = {}
-
     def inject_content(self, content_type: str, data: dict):
         """注入内容到环境（模拟外部数据源带注入）"""
         self._injected_content[content_type] = data
@@ -314,6 +321,8 @@ class FunctionCallingAgent:
         self.turn_count = 0
 
     def run(self, user_input: str) -> List[ToolCall]:
+        self.last_run_status = "running"
+        self.last_error_type = None
         if not self.messages:
             self.new_conversation()
 
@@ -326,12 +335,14 @@ class FunctionCallingAgent:
                 response = self.client.chat.completions.create(
                     model=self.config.model,
                     messages=self.messages,
-                    tools=TOOL_SCHEMAS,
+                tools=self.config.tool_schemas or TOOL_SCHEMAS,
                     temperature=self.config.temperature,
                     max_tokens=1024,
                 )
             except Exception as e:
                 print(f"  [API Error] {e}")
+                self.last_run_status = "api_error"
+                self.last_error_type = type(e).__name__
                 break
 
             msg = response.choices[0].message
@@ -361,7 +372,10 @@ class FunctionCallingAgent:
                 self.turn_count += 1
 
                 # 执行工具
-                handler = TOOL_DISPATCH.get(tc.function.name)
+                if self.config.tool_observer is not None:
+                    self.config.tool_observer(call)
+
+                handler = (self.config.tool_dispatch or TOOL_DISPATCH).get(tc.function.name)
                 if handler:
                     # 处理无参数工具（list_contacts 等）
                     try:
@@ -382,4 +396,6 @@ class FunctionCallingAgent:
                     "content": call.result,
                 })
 
+        if self.last_run_status == "running":
+            self.last_run_status = "ok" if session_calls else "empty_tool_trace"
         return session_calls

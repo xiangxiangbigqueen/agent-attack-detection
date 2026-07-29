@@ -1,0 +1,121 @@
+{
+  "disclosure": "Official AgentShield source, fixed archive SHA-256 EA08A9424F276E726DE3E96E747F3418C89FD65EDC7F21FC3E1D2BA31F59048E; pre-registered local banking interface adapter.",
+  "runs": [
+    {
+      "root": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\official_agentshield_R1",
+      "dr": 0.6,
+      "fpr": 0.0,
+      "successful_attack_dr": 1.0,
+      "variants": {
+        "Full": {
+          "dr": 0.6,
+          "fpr": 0.0
+        },
+        "HoneytoolsOnly": {
+          "dr": 0.0,
+          "fpr": 0.0
+        },
+        "HoneytokensOnly": {
+          "dr": 0.0,
+          "fpr": 0.0
+        },
+        "ParameterValidatorOnly": {
+          "dr": 0.6,
+          "fpr": 0.0
+        },
+        "NoHoneytools": {
+          "dr": 0.6,
+          "fpr": 0.0
+        },
+        "NoHoneytokens": {
+          "dr": 0.6,
+          "fpr": 0.0
+        },
+        "NoParameterValidator": {
+          "dr": 0.0,
+          "fpr": 0.0
+        }
+      }
+    },
+    {
+      "root": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\official_agentshield_R2",
+      "dr": 0.6041666666666666,
+      "fpr": 0.0,
+      "successful_attack_dr": 1.0,
+      "variants": {
+        "Full": {
+          "dr": 0.6041666666666666,
+          "fpr": 0.0
+        },
+        "HoneytoolsOnly": {
+          "dr": 0.0,
+          "fpr": 0.0
+        },
+        "HoneytokensOnly": {
+          "dr": 0.0,
+          "fpr": 0.0
+        },
+        "ParameterValidatorOnly": {
+          "dr": 0.6041666666666666,
+          "fpr": 0.0
+        },
+        "NoHoneytools": {
+          "dr": 0.6041666666666666,
+          "fpr": 0.0
+        },
+        "NoHoneytokens": {
+          "dr": 0.6041666666666666,
+          "fpr": 0.0
+        },
+        "NoParameterValidator": {
+          "dr": 0.0,
+          "fpr": 0.0
+        }
+      }
+    },
+    {
+      "root": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\official_agentshield_R3",
+      "dr": 0.6041666666666666,
+      "fpr": 0.0,
+      "successful_attack_dr": 1.0,
+      "variants": {
+        "Full": {
+          "dr": 0.6041666666666666,
+          "fpr": 0.0
+        },
+        "HoneytoolsOnly": {
+          "dr": 0.0,
+          "fpr": 0.0
+        },
+        "HoneytokensOnly": {
+          "dr": 0.0,
+          "fpr": 0.0
+        },
+        "ParameterValidatorOnly": {
+          "dr": 0.6041666666666666,
+          "fpr": 0.0
+        },
+        "NoHoneytools": {
+          "dr": 0.6041666666666666,
+          "fpr": 0.0
+        },
+        "NoHoneytokens": {
+          "dr": 0.6041666666666666,
+          "fpr": 0.0
+        },
+        "NoParameterValidator": {
+          "dr": 0.0,
+          "fpr": 0.0
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "dr_mean": 0.6027777777777777,
+    "dr_sample_sd": 0.002405626121623432,
+    "fpr_mean": 0.0,
+    "fpr_sample_sd": 0.0,
+    "successful_attack_dr_mean": 1.0,
+    "successful_attack_dr_sample_sd": 0.0
+  }
+}

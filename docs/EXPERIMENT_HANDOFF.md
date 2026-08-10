@@ -243,6 +243,8 @@ The complete-length final manuscript is at `output/pdf/behaviorgraph_submission_
 5. attack-family detection heterogeneity;
 6. primary versus official baseline descriptive comparison.
 
+The manuscript now also includes a same-trajectory baseline table produced by `experiments/run_baseline_suite.py`. The dedicated R6/R7 cross-session protocol is implemented in `experiments/cross_session_r67_protocol.py`, `experiments/collect_cross_session_r67.py`, and `experiments/run_cross_session_r67.py`. Because no new API collection was authorized or available, `output/audit/cross_session_r67_results.json` is explicitly `status=blocked` and is not used as a paper result.
+
 Before an actual submission:
 
 1. replace the placeholder author affiliation/contact;

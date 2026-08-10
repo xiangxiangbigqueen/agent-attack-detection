@@ -51,9 +51,13 @@ Intervals are 95% group bootstrap intervals. Full values, denominators, and exac
 - Corrected figure manifest: `output/pdf/assets_corrected/manifest.json`
 - Independent consistency audit: `output/audit/submission_consistency.json`
 - Method/threshold audit: `docs/METHOD_CONSISTENCY_AUDIT.md`
+- Paper repositioning and CCF-C gate: `docs/PAPER_REPOSITIONING_PLAN.md`
+- Same-trajectory baseline suite: `experiments/run_baseline_suite.py` and `output/baselines/summary.json`
+- Cross-session R6/R7 preregistered protocol: `docs/CROSS_SESSION_R67_PROTOCOL.md`
+- R6/R7 status artifact: `output/audit/cross_session_r67_results.json` (blocked until new API collection; no fabricated outcomes)
 - Earlier draft retained for provenance: `output/pdf/cross_session_trajectory_detection_revised.pdf`
 
-The complete-length manuscript deliberately distinguishes the full BehaviorGraph framework from the independently confirmed trajectory-only candidate (TO-CF). It uses six corrected figures with one-to-one figure/caption/data correspondence, preserves the full methods/results/limitations narrative, and includes an audit appendix. Adapt the author metadata, bibliography style, and page limits to the target venue before submission.
+The complete-length manuscript is now positioned as a leakage-controlled measurement study: “How Much Can Tool Trajectories Reveal? A Leakage-Controlled Study of Cross-Session Attacks on LLM Agents.” It distinguishes the full BehaviorGraph framework from the independently confirmed trajectory-only candidate (TO-CF), reports same-trajectory baselines, and includes an audit appendix. Adapt the author metadata, bibliography style, and page limits to the target venue before submission.
 
 ## Reproduce the analyses
 

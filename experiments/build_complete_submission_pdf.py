@@ -115,16 +115,17 @@ def main():
     S = []
 
     # Page 1: front matter and motivation.
-    S += [P("Cross-Session Tool-Trajectory Detection for LLM Agents:<br/>A Reproducible Empirical Evaluation", st["TitlePaper"]),
+    S += [P("How Much Can Tool Trajectories Reveal?<br/>A Leakage-Controlled Study of Cross-Session Attacks on LLM Agents", st["TitlePaper"]),
           P("Xiangyi Li<br/><i>Independent Researcher</i>", st["Author"]),
           P("ABSTRACT", st["AbstractHead"]),
-          P("Indirect prompt injection and multi-round attacks can distribute a harmful objective across otherwise ordinary tool calls. This paper evaluates a reduced trajectory-only candidate derived from a broader BehaviorGraph implementation. The candidate was selected using development evidence (R1-R3), frozen before two independent API confirmation runs (R4-R5), and calibrated without test-set threshold selection. Across 480 attack groups and 400 benign test groups, the candidate detects 139 attack attempts (29.0%), recalls 137 of 320 successful objectives (42.8%), and raises one benign alert (0.25%). Exact total-tool-call-count matching reduces detection to 22.2%-25.7%. Transition/frequency deviations provide the measured signal; removing the cross-session component changes detection by less than one percentage point. Removing cumulative scoring reaches 95%-100% in a post-confirmation exploratory ablation and therefore requires preregistered replication. The results are specific to one model family and a banking-style sandbox and do not support production-readiness or cross-model claims.", st["Abstract"]),
-          P("<b>Index Terms</b> - LLM agents, tool trajectories, cross-session detection, prompt injection, reproducible evaluation.", st["Abstract"]),
+          P("Indirect prompt injection and multi-round attacks can distribute a harmful objective across otherwise ordinary tool calls. This paper measures how much information is available in tool-use trajectories under a leakage-controlled protocol. A reduced trajectory-only candidate is selected using development evidence (R1-R3), frozen before two independent API confirmation runs (R4-R5), and calibrated without test-set threshold selection. Across 480 attack groups and 400 benign test groups, it detects 139 attack attempts (29.0%), recalls 137 of 320 successful objectives (42.8%), and raises one benign alert (0.25%). Exact total-tool-call-count matching reduces detection to 22.2%-25.7%. Transition/frequency deviations provide the measured signal; removing the cross-session component changes detection by less than one percentage point. Removing cumulative scoring reaches 95%-100% in a post-confirmation exploratory ablation and therefore requires preregistered replication. The evidence is specific to one model family and a banking-style sandbox: tool trajectories provide useful but incomplete security evidence rather than a production-ready detector.", st["Abstract"]),
+          P("<b>Index Terms</b> - LLM agents, tool trajectories, cross-session attacks, behavioral anomaly detection, prompt injection, reproducible evaluation.", st["Abstract"]),
           P("1. INTRODUCTION", st["Section"]),
           P("LLM agents with tool-use capabilities are increasingly used for data retrieval, email, transactions, and workflow automation. Their risk surface is not limited to a single prompt: the same call can be benign in isolation and harmful when combined with earlier calls, persistent memory, or information imported from an untrusted document. This motivates monitoring the tool trajectory as a first-class security signal.", st["Body"]),
           P("The evaluation problem is unusually sensitive to protocol choices. A detector may look strong when attack trajectories contain more calls than normal trajectories, when the threshold is selected on the test set, or when a defensive baseline changes the agent environment. We therefore focus on a narrow question: after development-time candidate selection is separated from confirmation, what detection-false-alarm trade-off does a tool-trajectory score provide?", st["Body"]),
           P("The contribution is an auditable measurement study rather than a deployment claim. We freeze a trajectory-only candidate, evaluate it on two new API-executed runs, report group-level bootstrap intervals, match attack and benign trajectories by total tool-call count, and analyze failure modes. We also report an official AgentShield reference only as a separate-execution descriptive comparison.", st["Body"]),
           P("The paper makes three deliberately bounded claims. First, TO-CF detects a measurable fraction of attack attempts at a low observed FPR in this sandbox. Second, transition/frequency deviations drive the measured signal, while the cross-session graph contributes little incremental benefit in these runs. Third, the detector misses many successful objectives, especially indirect injection, so the evidence does not support production readiness.", st["Body"]),
+          P("Research questions. RQ1 asks how much attack signal is present in tool trajectories after leakage and call-count confounding are controlled. RQ2 asks whether cross-session state improves over a session-only detector on attacks designed to require session linkage. RQ3 asks which attack families remain invisible to trajectory-only monitoring. RQ4 asks whether simple statistical baselines explain the observed performance.", st["Body"]),
           P("2. RELATED WORK", st["Section"]),
           P("AgentShield uses deception-based detection through honeytools and honeytokens at the tool interface. Its traps provide high-precision compromise signals, but they also alter the execution environment and therefore require careful comparison protocols. FragBench studies attacks whose malicious objective is fragmented across benign-looking interactions and motivates user-level or cross-session modeling.", st["Body"]),
           P("The present work is complementary in scope. It does not claim to replace content-aware or deception-based defenses; it measures what can be recovered from tool-use trajectories alone. This distinction matters because a detector that sees only tool names and transition statistics cannot identify harmful intent that never changes the observable action pattern.", st["Body"]),
@@ -179,11 +180,11 @@ def main():
     ] + tbl([
         ["Metric", "R4", "R5", "Macro summary"],
         ["Threshold", "5.0040541339", "4.9817326042", "run-specific"],
-        ["All-attempt detection", "68/240 = 28.3%", "71/240 = 29.6%", "29.0% +/- 0.9%"],
-        ["Successful recall", "67/160 = 41.9%", "70/160 = 43.8%", "42.8% +/- 1.3%"],
-        ["Benign FPR", "0/200 = 0.0%", "1/200 = 0.5%", "0.25% +/- 0.35%"],
-        ["Exact count matched", "26/117 = 22.2%", "29/113 = 25.7%", "secondary"],
-    ], [1.18*inch,1.0*inch,1.0*inch,1.03*inch], "TABLE III. Independent TO-CF confirmation results. Brackets in the machine-readable audit contain bootstrap intervals.", st) + [
+        ["All-attempt detection", "68/240 = 28.3% [22.5,34.2]", "71/240 = 29.6% [23.8,35.4]", "descriptive"],
+        ["Successful recall", "67/160 = 41.9% [34.4,49.4]", "70/160 = 43.8% [36.3,51.9]", "descriptive"],
+        ["Benign FPR", "0/200 = 0.0% [0,0]", "1/200 = 0.5% [0,1.5]", "observed"],
+        ["Exact count matched", "26/117 = 22.2% [14.5,29.9]", "29/113 = 25.7% [17.7,33.6]", "secondary"],
+    ], [1.18*inch,1.0*inch,1.0*inch,1.03*inch], "TABLE III. Independent TO-CF confirmation results. Brackets are bootstrap 95% intervals; the macro column is descriptive, not a pooled population estimate.", st) + [
         P("The two runs are numerically similar, but overlapping intervals do not establish broad stability. The aggregate is reported only as a descriptive macro summary. The low observed FPR is accompanied by limited recall: most successful objectives remain below the frozen threshold.", st["Body"]),
     ] + fig("figure2_score_distributions", col, "Fig. 2. Empirical distributions of maximum trajectory score for attack and benign groups. Dashed lines are the run-specific validation-maximum thresholds.", st)
     S += [NextPageTemplate("TwoCol"), PageBreak()]
@@ -203,7 +204,15 @@ def main():
     ] + fig("figure3_primary_confirmation", col, "Fig. 3. Primary TO-CF metrics. Error bars are bootstrap 95% intervals; exact matching is by total tool-call count.", st) + fig("figure5_attack_taxonomy", col, "Fig. 4. All-attempt detection heterogeneity across six attack families. This is a family breakdown, not a missed-case-only chart.", st) + [
         P("5.2 Length-matched evaluation", st["Subsection"]),
         P("The exact count-matched rates are lower than the unmatched all-attempt rates in both runs. This rules out the interpretation that the headline detection rate is purely a consequence of attacks having more calls, although residual confounding remains because matched groups can still differ in semantics and tool identity.", st["Body"]),
-    ]
+        P("5.3 Same-trajectory baselines", st["Subsection"]),
+        P("Four trajectory-only comparators were fitted and calibrated on the identical R4/R5 groups: normalized tool-frequency z-scores, first-order Markov transition surprise, a regularized Mahalanobis detector over tool/transition proportions, and Isolation Forest. The results show why a new detector claim requires matched baselines: simple methods range from zero detection to high detection with very different recall profiles. None uses natural-language content or changes the agent environment.", st["Body"]),
+    ] + [KeepTogether(tbl([
+        ["Method", "R4: all / success / FPR", "R5: all / success / FPR"],
+        ["Tool-frequency z", "21.3% / 0.0% / 1.0%", "21.3% / 0.0% / 1.0%"],
+        ["Markov transition", "0.0% / 0.0% / 0.0%", "0.0% / 0.0% / 0.0%"],
+        ["Mahalanobis", "88.8% / 83.1% / 0.0%", "94.2% / 91.3% / 0.0%"],
+        ["Isolation Forest", "0.0% / 0.0% / 0.0%", "0.0% / 0.0% / 0.0%"],
+    ], [1.15*inch,1.03*inch,1.03*inch], "TABLE V. Same-trajectory baseline results. Each cell reports all-attempt detection / successful-objective recall / benign FPR; Wilson intervals are in the JSON artifacts.", st))]
     S += [NextPageTemplate("TwoCol"), PageBreak()]
 
     # Page 5: ablations and failure cases.
@@ -215,7 +224,7 @@ def main():
         ["No cross-session", "27.9%", "29.2%", "exploratory"],
         ["No transition/frequency", "0.0%", "0.0%", "exploratory"],
         ["No cumulative", "95.0%", "100.0%", "post-hoc hypothesis"],
-    ], [1.25*inch,.65*inch,.65*inch,1.0*inch], "TABLE V. Post-confirmation ablation. No row except TO-CF is a locked primary result.", st) + fig("figure4_exploratory_ablation", col, "Fig. 5. Exploratory mechanism ablation. The no-cumulative result requires preregistered R6/R7 replication.", st) + [
+    ], [1.25*inch,.65*inch,.65*inch,1.0*inch], "TABLE VI. Post-confirmation ablation. No row except TO-CF is a locked primary result.", st) + fig("figure4_exploratory_ablation", col, "Fig. 5. Exploratory mechanism ablation. The no-cumulative result requires preregistered R6/R7 replication.", st) + [
         P("6.1 Failure analysis", st["Subsection"]),
           P("Across R4/R5, TO-CF misses 183 successful objectives: 80 indirect-injection cases (44%), 47 tool-chain exfiltration cases (26%), 48 transaction-cover cases (26%), and 8 privilege-escalation cases (4%). The dominant failure mode is semantic indistinguishability: a malicious instruction can cause a normal-looking read-then-send sequence, leaving no unusual transition for a trajectory-only score to detect.", st["Body"]),
           P("The R5 benign false positive is a normal session containing multiple export_data calls with null reasons. This is a useful diagnostic rather than evidence of an attack: rare but legitimate workflow variants can cross a threshold calibrated on a limited normal sample.", st["Body"]),
@@ -244,7 +253,7 @@ def main():
         ["confirmation_paper_artifacts/", "Summary JSON, misses CSV, paper-ready plots"],
         ["audit_submission_consistency.py", "Independent threshold/denominator/ablation audit"],
         ["assets_corrected/manifest.json", "Six figure names, data source, comparison disclosures"],
-    ], [1.65*inch,2.0*inch], "TABLE VI. Reproducibility artifacts included with the submission package.", st) + [
+    ], [1.65*inch,2.0*inch], "TABLE VII. Reproducibility artifacts included with the submission package.", st) + [
           PageBreak(),
           P("10. FUTURE WORK", st["Section"]),
           P("The next experiment should be preregistered before data collection. R6/R7 should test the no-cumulative hypothesis with new attack wordings, operands, normal trajectories, and fixed endpoints. If the full BehaviorGraph framework is to remain in the title or contribution claim, it also requires independent Full-BG confirmation. A stronger system should evaluate hybrid content-plus-trajectory signals, multiple model families, multiple tool domains, adaptive attackers, detection latency, and computational cost.", st["Body"]),
@@ -265,7 +274,7 @@ def main():
         ["Threshold > validation max", "pass", "pass", "strictly greater"],
         ["Test labels used in calibration", "no", "no", "never"],
         ["No-transition ablation", "0.0%", "0.0%", "exploratory only"],
-    ], [1.35*inch,.58*inch,.58*inch,1.15*inch], "TABLE VII. Machine-checked audit invariants.", st) + [
+    ], [1.35*inch,.58*inch,.58*inch,1.15*inch], "TABLE VIII. Machine-checked audit invariants.", st) + [
           P("A collaborator can rebuild the figures and PDF with pip install -r requirements.txt, then run python experiments/generate_corrected_figures.py, python experiments/audit_submission_consistency.py, and python experiments/build_complete_submission_pdf.py. API collection is not needed to reproduce the checked-in paper outputs.", st["Rebuild"]),
     ]
     doc.build(S)

@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "runs": [
+    "R4",
+    "R5"
+  ],
+  "results": {
+    "R4": {
+      "tool_frequency_zscore": {
+        "alerts": 51,
+        "total": 240,
+        "rate": 0.2125,
+        "wilson_95": [
+          0.165484,
+          0.268575
+        ]
+      },
+      "markov_transition": {
+        "alerts": 0,
+        "total": 240,
+        "rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.015754
+        ]
+      },
+      "mahalanobis": {
+        "alerts": 213,
+        "total": 240,
+        "rate": 0.8875,
+        "wilson_95": [
+          0.841267,
+          0.921523
+        ]
+      },
+      "isolation_forest": {
+        "alerts": 0,
+        "total": 240,
+        "rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.015754
+        ]
+      }
+    },
+    "R5": {
+      "tool_frequency_zscore": {
+        "alerts": 51,
+        "total": 240,
+        "rate": 0.2125,
+        "wilson_95": [
+          0.165484,
+          0.268575
+        ]
+      },
+      "markov_transition": {
+        "alerts": 0,
+        "total": 240,
+        "rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.015754
+        ]
+      },
+      "mahalanobis": {
+        "alerts": 226,
+        "total": 240,
+        "rate": 0.9416666666666667,
+        "wilson_95": [
+          0.904479,
+          0.964938
+        ]
+      },
+      "isolation_forest": {
+        "alerts": 0,
+        "total": 240,
+        "rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.015754
+        ]
+      }
+    }
+  }
+}

@@ -27,7 +27,9 @@ The methods text mixed a full feature-rich BehaviorGraph with the reduced candid
 5. Rewrote the final paper's title and abstract to identify the confirmed model as TO-CF, state the exact threshold rule and thresholds, remove production-readiness language, and disclose the separate baseline execution.
 6. Added a per-attack-family table, exact thresholds, configuration boundary table, length-matching terminology, failure counts, and the R6/R7 requirement for the no-cumulative hypothesis.
 7. Created `experiments/build_complete_submission_pdf.py` and rebuilt the complete-length manuscript with the full method, protocol, results, baseline, threats-to-validity, reproducibility, references, and audit appendix sections.
-7. Rendered all four final pages to PNG and visually checked that captions stay with their figures, no old figures remain, no plot overlaps text, and the short running header is clean.
+8. Added `experiments/run_baseline_suite.py` and executed four same-trajectory baselines on R4/R5 using frozen validation thresholds and identical group denominators.
+9. Added the preregistered R6/R7 cross-session protocol and fail-closed collector/evaluator. No new API outcomes were available, so the status artifact is `blocked` and no result is claimed.
+10. Repositioned the manuscript title and abstract as a leakage-controlled measurement study and visually checked all eight rendered pages after the baseline table was integrated.
 
 ## Canonical numbers used in the final paper
 
@@ -53,7 +55,9 @@ The aggregate descriptive values are 29.0% all-attempt detection, 42.8% successf
 - [x] AgentShield is labelled separate execution and descriptive only.
 - [x] No-cumulative is labelled post-confirmation exploratory.
 - [x] Final PDF has no stale legacy plots or excessive-length running header.
-- [x] Author affiliation/contact remains the only submission metadata placeholder.
+- [x] Author line is neutralized as “Independent Researcher”; target-venue author metadata and double-blind rules still require final adaptation.
+- [x] Same-trajectory baseline table is included with machine-readable Wilson intervals and source hashes.
+- [x] R6/R7 protocol is frozen and clearly separated from the current R4/R5 evidence; blocked status is not presented as a result.
 
 ## Remaining scientific work before stronger claims
 

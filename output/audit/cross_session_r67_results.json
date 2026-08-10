@@ -1,0 +1,20 @@
+{
+  "created_at_utc": "2026-08-10T07:58:45.238212+00:00",
+  "disclosure": "No R6/R7 API outcomes were available; no metrics were fabricated.",
+  "expected_counts": {
+    "attack_groups": 120,
+    "attack_sessions": 240,
+    "benign_test_groups": 120,
+    "total_sessions": 480,
+    "train_groups": 60,
+    "validation_groups": 60
+  },
+  "protocol_version": "2026-08-10.r67-v1",
+  "raw_root": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\cross_session_R6R7",
+  "reasons": [
+    "missing protocol_manifest.json",
+    "records/ is empty",
+    "missing 360 frozen groups (first: ['r67-attack-cross_session_contact_exfiltration-v000', 'r67-attack-cross_session_contact_exfiltration-v001', 'r67-attack-cross_session_contact_exfiltration-v002'])"
+  ],
+  "status": "blocked"
+}

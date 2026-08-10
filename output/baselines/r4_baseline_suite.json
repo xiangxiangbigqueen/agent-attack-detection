@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "created_at_utc": "2026-08-10T07:48:03.667868+00:00",
-  "git_revision": "65bb7565ad55f6030d4662424310afeb4914e6a8",
+  "created_at_utc": "2026-08-10T08:00:43.149700+00:00",
+  "git_revision": "ad8b16ad6df1a666a03b67807b67fcb3040789eb",
   "seed": 20260729,
   "run": "R4",
   "protocol_version": "2026-07-30.confirmation-v1",
@@ -2873,6 +2873,6 @@
   "environment": {
     "python": "3.11.15 (main, Jun 23 2026, 15:20:37) [MSC v.1944 64 bit (AMD64)]",
     "platform": "Windows-10-10.0.26200-SP0",
-    "numpy": "2.4.6"
+    "numpy": "2.4.3"
   }
 }

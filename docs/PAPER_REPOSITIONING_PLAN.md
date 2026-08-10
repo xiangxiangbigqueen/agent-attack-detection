@@ -1,7 +1,7 @@
 # Paper Repositioning and CCF-C Submission Plan
 
-**Status:** execution plan grounded in the current R4/R5 evidence  
-**Date:** 2026-08-10  
+**Status:** execution plan grounded in the current R4/R5 evidence
+**Date:** 2026-08-10
 **Scope:** redesign of the manuscript and experiment package; no new result is claimed unless it is produced by a preregistered run.
 
 ## 1. Decision and positioning
@@ -173,4 +173,3 @@ Before submission:
 ## 10. Submission decision rule
 
 The manuscript is submission-ready only when all mandatory experiments are complete, all primary tables include uncertainty, the method is named consistently (Full-BG versus TO-CF), and the title matches the measured cross-session effect. If R6/R7 does not establish a reliable gain, submit the measurement-study title and remove superiority language. This rule prevents the paper from making a stronger claim than its own evidence supports.
-

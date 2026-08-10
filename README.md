@@ -43,15 +43,17 @@ Intervals are 95% group bootstrap intervals. Full values, denominators, and exac
 
 ## Paper
 
-- Final corrected submission PDF: `output/pdf/behaviorgraph_submission_final.pdf`
-- Final source builder: `experiments/build_final_submission_pdf.py`
+- Final complete-length submission PDF: `output/pdf/behaviorgraph_submission_complete.pdf`
+- Complete-length source builder: `experiments/build_complete_submission_pdf.py`
+- Short corrected PDF retained for provenance: `output/pdf/behaviorgraph_submission_final.pdf`
+- Short-form source builder: `experiments/build_final_submission_pdf.py`
 - Corrected figure generator: `experiments/generate_corrected_figures.py`
 - Corrected figure manifest: `output/pdf/assets_corrected/manifest.json`
 - Independent consistency audit: `output/audit/submission_consistency.json`
 - Method/threshold audit: `docs/METHOD_CONSISTENCY_AUDIT.md`
 - Earlier draft retained for provenance: `output/pdf/cross_session_trajectory_detection_revised.pdf`
 
-The final manuscript deliberately distinguishes the full BehaviorGraph framework from the independently confirmed trajectory-only candidate (TO-CF). It uses six corrected figures with one-to-one figure/caption/data correspondence. Before submitting, replace the author affiliation/contact details and adapt bibliography/page limits to the target venue.
+The complete-length manuscript deliberately distinguishes the full BehaviorGraph framework from the independently confirmed trajectory-only candidate (TO-CF). It uses six corrected figures with one-to-one figure/caption/data correspondence, preserves the full methods/results/limitations narrative, and includes an audit appendix. Adapt the author metadata, bibliography style, and page limits to the target venue before submission.
 
 ## Reproduce the analyses
 

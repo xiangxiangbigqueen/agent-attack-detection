@@ -234,7 +234,7 @@ The ignored `external_baselines/agentshield_py311/` directory is a local, Window
 
 ## 11. Manuscript notes
 
-The final manuscript is at `output/pdf/behaviorgraph_submission_final.pdf`; its source builder is `experiments/build_final_submission_pdf.py`. The earlier `cross_session_trajectory_detection_revised.pdf` is retained only for provenance. The final paper contains six corrected data-backed figures:
+The complete-length final manuscript is at `output/pdf/behaviorgraph_submission_complete.pdf`; its source builder is `experiments/build_complete_submission_pdf.py`. The shorter corrected PDF (`output/pdf/behaviorgraph_submission_final.pdf`) and the earlier `cross_session_trajectory_detection_revised.pdf` are retained only for provenance. The complete paper contains six corrected data-backed figures:
 
 1. frozen development-to-confirmation protocol;
 2. empirical score distributions for R4/R5 attack and benign groups;

@@ -2,7 +2,9 @@
 
 **Review date:** 2026-08-10
 **Input reviewed:** `ars_paper.pdf` supplied by the author
-**Final output:** `output/pdf/behaviorgraph_submission_final.pdf`
+**Final output:** `output/pdf/behaviorgraph_submission_complete.pdf` (complete-length manuscript)
+
+The shorter `output/pdf/behaviorgraph_submission_final.pdf` remains available as a provenance artifact; it is not the primary deliverable.
 
 ## Problems found in the supplied PDF
 
@@ -21,9 +23,10 @@ The methods text mixed a full feature-rich BehaviorGraph with the reduced candid
    - `figure4_exploratory_ablation`: explicitly post-confirmation ablations;
    - `figure5_attack_taxonomy`: all-attempt detection by all six attack families;
    - `figure6_separate_baseline`: descriptive AgentShield separate-execution comparison.
-4. Created `experiments/build_final_submission_pdf.py` and rebuilt `output/pdf/behaviorgraph_submission_final.pdf` from the corrected assets.
+4. Created `experiments/build_final_submission_pdf.py` and rebuilt the short provenance PDF from the corrected assets.
 5. Rewrote the final paper's title and abstract to identify the confirmed model as TO-CF, state the exact threshold rule and thresholds, remove production-readiness language, and disclose the separate baseline execution.
 6. Added a per-attack-family table, exact thresholds, configuration boundary table, length-matching terminology, failure counts, and the R6/R7 requirement for the no-cumulative hypothesis.
+7. Created `experiments/build_complete_submission_pdf.py` and rebuilt the complete-length manuscript with the full method, protocol, results, baseline, threats-to-validity, reproducibility, references, and audit appendix sections.
 7. Rendered all four final pages to PNG and visually checked that captions stay with their figures, no old figures remain, no plot overlaps text, and the short running header is clean.
 
 ## Canonical numbers used in the final paper

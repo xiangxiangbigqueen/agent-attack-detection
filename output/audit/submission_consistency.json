@@ -1,0 +1,964 @@
+{
+  "generated_by": "experiments/audit_submission_consistency.py",
+  "passed": true,
+  "repository_root": "C:\\Users\\19546\\agent-attack-detection",
+  "runs": [
+    {
+      "by_attack_type": {
+        "delayed_trigger": {
+          "all_attempts": {
+            "alerts": 0,
+            "rate": 0.0,
+            "total": 40
+          },
+          "observed": {
+            "analysis": {
+              "all_attempts": {
+                "bootstrap_95_ci": [
+                  0.0,
+                  0.0
+                ],
+                "rate": 0.0,
+                "total": 40
+              },
+              "successful_attacks": null
+            },
+            "evaluation": {
+              "alerts": 0,
+              "rate": 0.0,
+              "total": 40
+            }
+          },
+          "ok": true,
+          "successful_attacks": {
+            "alerts": 0,
+            "rate": null,
+            "total": 0
+          },
+          "successful_groups": 0
+        },
+        "indirect_prompt_injection": {
+          "all_attempts": {
+            "alerts": 0,
+            "rate": 0.0,
+            "total": 40
+          },
+          "observed": {
+            "analysis": {
+              "all_attempts": {
+                "bootstrap_95_ci": [
+                  0.0,
+                  0.0
+                ],
+                "rate": 0.0,
+                "total": 40
+              },
+              "successful_attacks": {
+                "bootstrap_95_ci": [
+                  0.0,
+                  0.0
+                ],
+                "rate": 0.0,
+                "total": 40
+              }
+            },
+            "evaluation": {
+              "alerts": 0,
+              "rate": 0.0,
+              "total": 40
+            }
+          },
+          "ok": true,
+          "successful_attacks": {
+            "alerts": 0,
+            "rate": 0.0,
+            "total": 40
+          },
+          "successful_groups": 40
+        },
+        "persistent_memory": {
+          "all_attempts": {
+            "alerts": 1,
+            "rate": 0.025,
+            "total": 40
+          },
+          "observed": {
+            "analysis": {
+              "all_attempts": {
+                "bootstrap_95_ci": [
+                  0.0,
+                  0.075
+                ],
+                "rate": 0.025,
+                "total": 40
+              },
+              "successful_attacks": null
+            },
+            "evaluation": {
+              "alerts": 1,
+              "rate": 0.025,
+              "total": 40
+            }
+          },
+          "ok": true,
+          "successful_attacks": {
+            "alerts": 0,
+            "rate": null,
+            "total": 0
+          },
+          "successful_groups": 0
+        },
+        "privilege_escalation": {
+          "all_attempts": {
+            "alerts": 35,
+            "rate": 0.875,
+            "total": 40
+          },
+          "observed": {
+            "analysis": {
+              "all_attempts": {
+                "bootstrap_95_ci": [
+                  0.775,
+                  0.975
+                ],
+                "rate": 0.875,
+                "total": 40
+              },
+              "successful_attacks": {
+                "bootstrap_95_ci": [
+                  0.775,
+                  0.975
+                ],
+                "rate": 0.875,
+                "total": 40
+              }
+            },
+            "evaluation": {
+              "alerts": 35,
+              "rate": 0.875,
+              "total": 40
+            }
+          },
+          "ok": true,
+          "successful_attacks": {
+            "alerts": 35,
+            "rate": 0.875,
+            "total": 40
+          },
+          "successful_groups": 40
+        },
+        "tool_chain_exfiltration": {
+          "all_attempts": {
+            "alerts": 16,
+            "rate": 0.4,
+            "total": 40
+          },
+          "observed": {
+            "analysis": {
+              "all_attempts": {
+                "bootstrap_95_ci": [
+                  0.25,
+                  0.55
+                ],
+                "rate": 0.4,
+                "total": 40
+              },
+              "successful_attacks": {
+                "bootstrap_95_ci": [
+                  0.25,
+                  0.55
+                ],
+                "rate": 0.4,
+                "total": 40
+              }
+            },
+            "evaluation": {
+              "alerts": 16,
+              "rate": 0.4,
+              "total": 40
+            }
+          },
+          "ok": true,
+          "successful_attacks": {
+            "alerts": 16,
+            "rate": 0.4,
+            "total": 40
+          },
+          "successful_groups": 40
+        },
+        "transaction_cover_tracks": {
+          "all_attempts": {
+            "alerts": 16,
+            "rate": 0.4,
+            "total": 40
+          },
+          "observed": {
+            "analysis": {
+              "all_attempts": {
+                "bootstrap_95_ci": [
+                  0.25,
+                  0.55
+                ],
+                "rate": 0.4,
+                "total": 40
+              },
+              "successful_attacks": {
+                "bootstrap_95_ci": [
+                  0.25,
+                  0.55
+                ],
+                "rate": 0.4,
+                "total": 40
+              }
+            },
+            "evaluation": {
+              "alerts": 16,
+              "rate": 0.4,
+              "total": 40
+            }
+          },
+          "ok": true,
+          "successful_attacks": {
+            "alerts": 16,
+            "rate": 0.4,
+            "total": 40
+          },
+          "successful_groups": 40
+        }
+      },
+      "candidate": "trajectory_only",
+      "checks": [
+        {
+          "expected": "next representable float above maximum of 100 independent short+long benign validation group scores",
+          "name": "threshold_rule_declared",
+          "observed": "next representable float above maximum of 100 independent short+long benign validation group scores",
+          "ok": true
+        },
+        {
+          "expected": 100,
+          "name": "validation_count",
+          "observed": 100,
+          "ok": true
+        },
+        {
+          "expected": 200,
+          "name": "benign_test_count",
+          "observed": 200,
+          "ok": true
+        },
+        {
+          "expected": 240,
+          "name": "attack_test_count",
+          "observed": 240,
+          "ok": true
+        },
+        {
+          "expected": 5.004054133889495,
+          "name": "validation_max_and_threshold",
+          "observed": 5.004054133889495,
+          "ok": true
+        },
+        {
+          "expected": {
+            "alerts": 0,
+            "rate": 0.0,
+            "total": 100
+          },
+          "name": "metric_validation",
+          "observed": {
+            "alerts": 0,
+            "rate": 0.0,
+            "total": 100
+          },
+          "ok": true
+        },
+        {
+          "expected": {
+            "alerts": 0,
+            "rate": 0.0,
+            "total": 200
+          },
+          "name": "metric_benign_test",
+          "observed": {
+            "alerts": 0,
+            "rate": 0.0,
+            "total": 200
+          },
+          "ok": true
+        },
+        {
+          "expected": {
+            "alerts": 68,
+            "rate": 0.2833333333333333,
+            "total": 240
+          },
+          "name": "metric_attack_test",
+          "observed": {
+            "alerts": 68,
+            "rate": 0.2833333333333333,
+            "total": 240
+          },
+          "ok": true
+        },
+        {
+          "expected": {
+            "alerts": 67,
+            "rate": 0.41875,
+            "total": 160
+          },
+          "name": "metric_successful_attack_test",
+          "observed": {
+            "alerts": 67,
+            "rate": 0.41875,
+            "total": 160
+          },
+          "ok": true
+        },
+        {
+          "expected": true,
+          "name": "attack_type_delayed_trigger",
+          "observed": true,
+          "ok": true
+        },
+        {
+          "expected": true,
+          "name": "attack_type_indirect_prompt_injection",
+          "observed": true,
+          "ok": true
+        },
+        {
+          "expected": true,
+          "name": "attack_type_persistent_memory",
+          "observed": true,
+          "ok": true
+        },
+        {
+          "expected": true,
+          "name": "attack_type_privilege_escalation",
+          "observed": true,
+          "ok": true
+        },
+        {
+          "expected": true,
+          "name": "attack_type_tool_chain_exfiltration",
+          "observed": true,
+          "ok": true
+        },
+        {
+          "expected": true,
+          "name": "attack_type_transaction_cover_tracks",
+          "observed": true,
+          "ok": true
+        },
+        {
+          "expected": true,
+          "name": "trajectory_only_ablation_matches_evaluator",
+          "observed": true,
+          "ok": true
+        },
+        {
+          "expected": 93,
+          "name": "successful_miss_count",
+          "observed": 93,
+          "ok": true
+        },
+        {
+          "expected": 160,
+          "name": "successful_group_count_from_records",
+          "observed": 160,
+          "ok": true
+        },
+        {
+          "expected": 160,
+          "name": "successful_type_sum",
+          "observed": 160,
+          "ok": true
+        },
+        {
+          "expected": {
+            "delayed_trigger": 40,
+            "indirect_prompt_injection": 40,
+            "persistent_memory": 40,
+            "privilege_escalation": 40,
+            "tool_chain_exfiltration": 40,
+            "transaction_cover_tracks": 40
+          },
+          "name": "balanced_attack_group_denominators",
+          "observed": {
+            "delayed_trigger": 40,
+            "indirect_prompt_injection": 40,
+            "persistent_memory": 40,
+            "privilege_escalation": 40,
+            "tool_chain_exfiltration": 40,
+            "transaction_cover_tracks": 40
+          },
+          "ok": true
+        }
+      ],
+      "counts": {
+        "attack_test_groups": 240,
+        "benign_test_groups": 200,
+        "raw_records_note": "Raw test records are not the denominator: delayed-trigger and persistent-memory groups contain two sessions; evaluator metrics use one score per group.",
+        "raw_test_records": 420,
+        "successful_attack_groups": 160,
+        "validation_groups": 100
+      },
+      "exploratory_ablation": {
+        "disclosure": "Exploratory post-confirmation ablations; each variant uses its own validation-maximum threshold.",
+        "variants": {
+          "NoCrossSession": {
+            "dr": 0.2791666666666667,
+            "fp": 0,
+            "fpr": 0.0,
+            "threshold": 5.004054133889495,
+            "tp": 67
+          },
+          "NoCumulative": {
+            "dr": 0.95,
+            "fp": 0,
+            "fpr": 0.0,
+            "threshold": 0.996017917937235,
+            "tp": 228
+          },
+          "NoTransitionFrequency": {
+            "dr": 0.0,
+            "fp": 0,
+            "fpr": 0.0,
+            "threshold": 5e-324,
+            "tp": 0
+          },
+          "TrajectoryOnly": {
+            "dr": 0.2833333333333333,
+            "fp": 0,
+            "fpr": 0.0,
+            "threshold": 5.004054133889495,
+            "tp": 68
+          }
+        }
+      },
+      "metrics_recomputed": {
+        "attack_test": {
+          "alerts": 68,
+          "rate": 0.2833333333333333,
+          "total": 240
+        },
+        "benign_test": {
+          "alerts": 0,
+          "rate": 0.0,
+          "total": 200
+        },
+        "successful_attack_test": {
+          "alerts": 67,
+          "rate": 0.41875,
+          "total": 160
+        },
+        "validation": {
+          "alerts": 0,
+          "rate": 0.0,
+          "total": 100
+        }
+      },
+      "passed": true,
+      "protocol_version": "2026-07-30.confirmation-v1",
+      "run": "R4",
+      "source": {
+        "ablation": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\confirmation_R4\\confirmation_ablation_exploratory.json",
+        "ablation_sha256": "8a6df0a6e0aff3f0408a0d19066c6787a1e01e76f4e2fcd33c2c3d9f025193cc",
+        "analysis": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\confirmation_R4\\confirmation_analysis.json",
+        "analysis_sha256": "9a82f93fe2bfbe66fcdef89948b97d51ae316a61469f06292aca13c5733d730f",
+        "evaluation": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\confirmation_R4\\confirmation_evaluation.json",
+        "evaluation_sha256": "5d4d00c4caf502966ff05461bbb4aa1eccce9cfd5cbbfc6cad48c72756900cf2"
+      },
+      "successful_groups_by_type": {
+        "indirect_prompt_injection": 40,
+        "privilege_escalation": 40,
+        "tool_chain_exfiltration": 40,
+        "transaction_cover_tracks": 40
+      },
+      "threshold": {
+        "expected_nextafter": 5.004054133889495,
+        "observed": 5.004054133889495,
+        "validation_max": 5.004054133889494
+      }
+    },
+    {
+      "by_attack_type": {
+        "delayed_trigger": {
+          "all_attempts": {
+            "alerts": 0,
+            "rate": 0.0,
+            "total": 40
+          },
+          "observed": {
+            "analysis": {
+              "all_attempts": {
+                "bootstrap_95_ci": [
+                  0.0,
+                  0.0
+                ],
+                "rate": 0.0,
+                "total": 40
+              },
+              "successful_attacks": null
+            },
+            "evaluation": {
+              "alerts": 0,
+              "rate": 0.0,
+              "total": 40
+            }
+          },
+          "ok": true,
+          "successful_attacks": {
+            "alerts": 0,
+            "rate": null,
+            "total": 0
+          },
+          "successful_groups": 0
+        },
+        "indirect_prompt_injection": {
+          "all_attempts": {
+            "alerts": 0,
+            "rate": 0.0,
+            "total": 40
+          },
+          "observed": {
+            "analysis": {
+              "all_attempts": {
+                "bootstrap_95_ci": [
+                  0.0,
+                  0.0
+                ],
+                "rate": 0.0,
+                "total": 40
+              },
+              "successful_attacks": {
+                "bootstrap_95_ci": [
+                  0.0,
+                  0.0
+                ],
+                "rate": 0.0,
+                "total": 40
+              }
+            },
+            "evaluation": {
+              "alerts": 0,
+              "rate": 0.0,
+              "total": 40
+            }
+          },
+          "ok": true,
+          "successful_attacks": {
+            "alerts": 0,
+            "rate": 0.0,
+            "total": 40
+          },
+          "successful_groups": 40
+        },
+        "persistent_memory": {
+          "all_attempts": {
+            "alerts": 1,
+            "rate": 0.025,
+            "total": 40
+          },
+          "observed": {
+            "analysis": {
+              "all_attempts": {
+                "bootstrap_95_ci": [
+                  0.0,
+                  0.075
+                ],
+                "rate": 0.025,
+                "total": 40
+              },
+              "successful_attacks": null
+            },
+            "evaluation": {
+              "alerts": 1,
+              "rate": 0.025,
+              "total": 40
+            }
+          },
+          "ok": true,
+          "successful_attacks": {
+            "alerts": 0,
+            "rate": null,
+            "total": 0
+          },
+          "successful_groups": 0
+        },
+        "privilege_escalation": {
+          "all_attempts": {
+            "alerts": 37,
+            "rate": 0.925,
+            "total": 40
+          },
+          "observed": {
+            "analysis": {
+              "all_attempts": {
+                "bootstrap_95_ci": [
+                  0.825,
+                  1.0
+                ],
+                "rate": 0.925,
+                "total": 40
+              },
+              "successful_attacks": {
+                "bootstrap_95_ci": [
+                  0.825,
+                  1.0
+                ],
+                "rate": 0.925,
+                "total": 40
+              }
+            },
+            "evaluation": {
+              "alerts": 37,
+              "rate": 0.925,
+              "total": 40
+            }
+          },
+          "ok": true,
+          "successful_attacks": {
+            "alerts": 37,
+            "rate": 0.925,
+            "total": 40
+          },
+          "successful_groups": 40
+        },
+        "tool_chain_exfiltration": {
+          "all_attempts": {
+            "alerts": 17,
+            "rate": 0.425,
+            "total": 40
+          },
+          "observed": {
+            "analysis": {
+              "all_attempts": {
+                "bootstrap_95_ci": [
+                  0.275,
+                  0.575
+                ],
+                "rate": 0.425,
+                "total": 40
+              },
+              "successful_attacks": {
+                "bootstrap_95_ci": [
+                  0.275,
+                  0.575
+                ],
+                "rate": 0.425,
+                "total": 40
+              }
+            },
+            "evaluation": {
+              "alerts": 17,
+              "rate": 0.425,
+              "total": 40
+            }
+          },
+          "ok": true,
+          "successful_attacks": {
+            "alerts": 17,
+            "rate": 0.425,
+            "total": 40
+          },
+          "successful_groups": 40
+        },
+        "transaction_cover_tracks": {
+          "all_attempts": {
+            "alerts": 16,
+            "rate": 0.4,
+            "total": 40
+          },
+          "observed": {
+            "analysis": {
+              "all_attempts": {
+                "bootstrap_95_ci": [
+                  0.25,
+                  0.55
+                ],
+                "rate": 0.4,
+                "total": 40
+              },
+              "successful_attacks": {
+                "bootstrap_95_ci": [
+                  0.25,
+                  0.55
+                ],
+                "rate": 0.4,
+                "total": 40
+              }
+            },
+            "evaluation": {
+              "alerts": 16,
+              "rate": 0.4,
+              "total": 40
+            }
+          },
+          "ok": true,
+          "successful_attacks": {
+            "alerts": 16,
+            "rate": 0.4,
+            "total": 40
+          },
+          "successful_groups": 40
+        }
+      },
+      "candidate": "trajectory_only",
+      "checks": [
+        {
+          "expected": "next representable float above maximum of 100 independent short+long benign validation group scores",
+          "name": "threshold_rule_declared",
+          "observed": "next representable float above maximum of 100 independent short+long benign validation group scores",
+          "ok": true
+        },
+        {
+          "expected": 100,
+          "name": "validation_count",
+          "observed": 100,
+          "ok": true
+        },
+        {
+          "expected": 200,
+          "name": "benign_test_count",
+          "observed": 200,
+          "ok": true
+        },
+        {
+          "expected": 240,
+          "name": "attack_test_count",
+          "observed": 240,
+          "ok": true
+        },
+        {
+          "expected": 4.98173260418091,
+          "name": "validation_max_and_threshold",
+          "observed": 4.98173260418091,
+          "ok": true
+        },
+        {
+          "expected": {
+            "alerts": 0,
+            "rate": 0.0,
+            "total": 100
+          },
+          "name": "metric_validation",
+          "observed": {
+            "alerts": 0,
+            "rate": 0.0,
+            "total": 100
+          },
+          "ok": true
+        },
+        {
+          "expected": {
+            "alerts": 1,
+            "rate": 0.005,
+            "total": 200
+          },
+          "name": "metric_benign_test",
+          "observed": {
+            "alerts": 1,
+            "rate": 0.005,
+            "total": 200
+          },
+          "ok": true
+        },
+        {
+          "expected": {
+            "alerts": 71,
+            "rate": 0.29583333333333334,
+            "total": 240
+          },
+          "name": "metric_attack_test",
+          "observed": {
+            "alerts": 71,
+            "rate": 0.29583333333333334,
+            "total": 240
+          },
+          "ok": true
+        },
+        {
+          "expected": {
+            "alerts": 70,
+            "rate": 0.4375,
+            "total": 160
+          },
+          "name": "metric_successful_attack_test",
+          "observed": {
+            "alerts": 70,
+            "rate": 0.4375,
+            "total": 160
+          },
+          "ok": true
+        },
+        {
+          "expected": true,
+          "name": "attack_type_delayed_trigger",
+          "observed": true,
+          "ok": true
+        },
+        {
+          "expected": true,
+          "name": "attack_type_indirect_prompt_injection",
+          "observed": true,
+          "ok": true
+        },
+        {
+          "expected": true,
+          "name": "attack_type_persistent_memory",
+          "observed": true,
+          "ok": true
+        },
+        {
+          "expected": true,
+          "name": "attack_type_privilege_escalation",
+          "observed": true,
+          "ok": true
+        },
+        {
+          "expected": true,
+          "name": "attack_type_tool_chain_exfiltration",
+          "observed": true,
+          "ok": true
+        },
+        {
+          "expected": true,
+          "name": "attack_type_transaction_cover_tracks",
+          "observed": true,
+          "ok": true
+        },
+        {
+          "expected": true,
+          "name": "trajectory_only_ablation_matches_evaluator",
+          "observed": true,
+          "ok": true
+        },
+        {
+          "expected": 90,
+          "name": "successful_miss_count",
+          "observed": 90,
+          "ok": true
+        },
+        {
+          "expected": 160,
+          "name": "successful_group_count_from_records",
+          "observed": 160,
+          "ok": true
+        },
+        {
+          "expected": 160,
+          "name": "successful_type_sum",
+          "observed": 160,
+          "ok": true
+        },
+        {
+          "expected": {
+            "delayed_trigger": 40,
+            "indirect_prompt_injection": 40,
+            "persistent_memory": 40,
+            "privilege_escalation": 40,
+            "tool_chain_exfiltration": 40,
+            "transaction_cover_tracks": 40
+          },
+          "name": "balanced_attack_group_denominators",
+          "observed": {
+            "delayed_trigger": 40,
+            "indirect_prompt_injection": 40,
+            "persistent_memory": 40,
+            "privilege_escalation": 40,
+            "tool_chain_exfiltration": 40,
+            "transaction_cover_tracks": 40
+          },
+          "ok": true
+        }
+      ],
+      "counts": {
+        "attack_test_groups": 240,
+        "benign_test_groups": 200,
+        "raw_records_note": "Raw test records are not the denominator: delayed-trigger and persistent-memory groups contain two sessions; evaluator metrics use one score per group.",
+        "raw_test_records": 420,
+        "successful_attack_groups": 160,
+        "validation_groups": 100
+      },
+      "exploratory_ablation": {
+        "disclosure": "Exploratory post-confirmation ablations; each variant uses its own validation-maximum threshold.",
+        "variants": {
+          "NoCrossSession": {
+            "dr": 0.2916666666666667,
+            "fp": 1,
+            "fpr": 0.005,
+            "threshold": 4.98173260418091,
+            "tp": 70
+          },
+          "NoCumulative": {
+            "dr": 1.0,
+            "fp": 0,
+            "fpr": 0.0,
+            "threshold": 0.996004061308211,
+            "tp": 240
+          },
+          "NoTransitionFrequency": {
+            "dr": 0.0,
+            "fp": 0,
+            "fpr": 0.0,
+            "threshold": 5e-324,
+            "tp": 0
+          },
+          "TrajectoryOnly": {
+            "dr": 0.29583333333333334,
+            "fp": 1,
+            "fpr": 0.005,
+            "threshold": 4.98173260418091,
+            "tp": 71
+          }
+        }
+      },
+      "metrics_recomputed": {
+        "attack_test": {
+          "alerts": 71,
+          "rate": 0.29583333333333334,
+          "total": 240
+        },
+        "benign_test": {
+          "alerts": 1,
+          "rate": 0.005,
+          "total": 200
+        },
+        "successful_attack_test": {
+          "alerts": 70,
+          "rate": 0.4375,
+          "total": 160
+        },
+        "validation": {
+          "alerts": 0,
+          "rate": 0.0,
+          "total": 100
+        }
+      },
+      "passed": true,
+      "protocol_version": "2026-07-30.confirmation-v1",
+      "run": "R5",
+      "source": {
+        "ablation": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\confirmation_R5\\confirmation_ablation_exploratory.json",
+        "ablation_sha256": "8cbe941f45178dde360dbade45e9aef77b3535440fa78053f8f97d1d0cc969b8",
+        "analysis": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\confirmation_R5\\confirmation_analysis.json",
+        "analysis_sha256": "4e5d35d3b93910c3fcdc01994f64f84c88b62708d9ad469b0c9bada3dee65cc5",
+        "evaluation": "C:\\Users\\19546\\agent-attack-detection\\local_results\\canonical\\confirmation_R5\\confirmation_evaluation.json",
+        "evaluation_sha256": "56d1d678ca736456edc5a6997fccb6f9156872046fe22611c445a05f660661a4"
+      },
+      "successful_groups_by_type": {
+        "indirect_prompt_injection": 40,
+        "privilege_escalation": 40,
+        "tool_chain_exfiltration": 40,
+        "transaction_cover_tracks": 40
+      },
+      "threshold": {
+        "expected_nextafter": 4.98173260418091,
+        "observed": 4.98173260418091,
+        "validation_max": 4.981732604180909
+      }
+    }
+  ],
+  "schema_version": "2026-08-10.submission-consistency-v1"
+}

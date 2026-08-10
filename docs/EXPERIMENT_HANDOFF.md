@@ -234,12 +234,14 @@ The ignored `external_baselines/agentshield_py311/` directory is a local, Window
 
 ## 11. Manuscript notes
 
-The final manuscript is at `output/pdf/cross_session_trajectory_detection_revised.pdf`; its editable source is adjacent. It contains four data-backed figures:
+The final manuscript is at `output/pdf/behaviorgraph_submission_final.pdf`; its source builder is `experiments/build_final_submission_pdf.py`. The earlier `cross_session_trajectory_detection_revised.pdf` is retained only for provenance. The final paper contains six corrected data-backed figures:
 
 1. frozen development-to-confirmation protocol;
-2. empirical score CDFs for R4/R5 attack and benign groups;
-3. exploratory ablation summary;
-4. primary versus official baseline descriptive comparison.
+2. empirical score distributions for R4/R5 attack and benign groups;
+3. primary TO-CF metrics;
+4. exploratory ablation summary;
+5. attack-family detection heterogeneity;
+6. primary versus official baseline descriptive comparison.
 
 Before an actual submission:
 

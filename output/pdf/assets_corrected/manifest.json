@@ -1,0 +1,16 @@
+{
+  "source": "local_results/canonical/confirmation_R4, confirmation_R5 and confirmation_paper_artifacts/confirmation_summary.json",
+  "figures": [
+    "figure1_evaluation_protocol",
+    "figure2_score_distributions",
+    "figure3_primary_confirmation",
+    "figure4_exploratory_ablation",
+    "figure5_attack_taxonomy",
+    "figure6_separate_baseline"
+  ],
+  "notes": [
+    "R4/R5 are independent confirmation runs; development R1-R3 are not plotted as test results.",
+    "AgentShield is a separate execution because its honeytools/honeytokens alter the environment; no paired significance claim is made.",
+    "Ablation is exploratory and post-confirmation; it is not presented as a preregistered primary result."
+  ]
+}

@@ -17,7 +17,7 @@ Chinese summary: 本项目不是“高分检测器已可部署”的宣传版本
 | `local_results/canonical/` | Frozen R1--R3 development artifacts; independent R4/R5 records, metrics, and paper tables/figures. |
 | `external_baselines/AgentShield_official_main.zip` | Archived public official AgentShield source used for the adapter; see the provenance section below. |
 | `tests/` | Unit tests for protocol, collection schema, evaluator, outcomes, and injection handling. |
-| `output/pdf/` | Submission-style manuscript, editable LaTeX source, and generated figures. |
+| `output/pdf/` | Corrected submission manuscript, source builder, and data-backed figure assets. |
 | `docs/EXPERIMENT_HANDOFF.md` | Detailed handoff: all decisions, runs, data locations, metrics, risks, and next actions. |
 
 ## Headline independent results
@@ -43,12 +43,15 @@ Intervals are 95% group bootstrap intervals. Full values, denominators, and exac
 
 ## Paper
 
-- Submission PDF: `output/pdf/cross_session_trajectory_detection_revised.pdf`
-- Editable source: `output/pdf/cross_session_trajectory_detection_revised.tex`
-- Local PDF composer: `experiments/build_submission_pdf.py`
-- Figure generator: `experiments/generate_submission_assets.py`
+- Final corrected submission PDF: `output/pdf/behaviorgraph_submission_final.pdf`
+- Final source builder: `experiments/build_final_submission_pdf.py`
+- Corrected figure generator: `experiments/generate_corrected_figures.py`
+- Corrected figure manifest: `output/pdf/assets_corrected/manifest.json`
+- Independent consistency audit: `output/audit/submission_consistency.json`
+- Method/threshold audit: `docs/METHOD_CONSISTENCY_AUDIT.md`
+- Earlier draft retained for provenance: `output/pdf/cross_session_trajectory_detection_revised.pdf`
 
-The manuscript deliberately changes the thesis from a claimed high-performing graph detector to a replicated measurement study of cross-session tool-trajectory detection. Before submitting, replace the author affiliation/contact details and adapt bibliography/page limits to the target venue.
+The final manuscript deliberately distinguishes the full BehaviorGraph framework from the independently confirmed trajectory-only candidate (TO-CF). It uses six corrected figures with one-to-one figure/caption/data correspondence. Before submitting, replace the author affiliation/contact details and adapt bibliography/page limits to the target venue.
 
 ## Reproduce the analyses
 
